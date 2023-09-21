@@ -1,0 +1,287 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Recomendador de filmes</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="#">Filmes</a>
+        <a href="#">Jogos</a>
+        <a href="#">Livros</a>
+    </nav>
+</header>
+
+
+<div class="container">
+    <h1>Questionário Interativo</h1>
+    <form id="quiz-form" method="post" action="{% url 'recomendation' %}">
+        {% csrf_token %}
+        <!-- Pergunta 1 -->
+        <div class="question">
+            <p class="pergunta">1. Qual é o seu gênero de filme preferido?</p>
+            <div class="options">
+                <input id="q1-alternativa-a" name="q1" value="a" type="radio">
+                <label for="q1-alternativa-a">Ação</label>
+            </div>
+            <div class="options">
+                <input id="q1-alternativa-b" name="q1" value="b" type="radio">
+                <label for="q1-alternativa-b">Comédia</label>
+            </div>
+            <div class="options">
+                <input id="q1-alternativa-c" name="q1" value="c" type="radio">
+                <label for="q1-alternativa-c">Drama</label>
+            </div>
+            <div class="options">
+                <input id="q1-alternativa-d" name="q1" value="d" type="radio">
+                <label for="q1-alternativa-d">Ficção Científica</label>
+            </div>
+            <div class="options">
+                <input id="q1-alternativa-e" name="q1" value="e" type="radio">
+                <label for="q1-alternativa-e">Romance</label>
+            </div>
+        </div>
+<!-- Pergunta 2 -->
+        <div class="question">
+            <p class="pergunta">2. Como você se sente sobre filmes de terror?</p>
+            <div class="options">
+                <input id="q2-alternativa-a" name="q2" value="a" type="radio">
+                <label for="q2-alternativa-a">Adoro!</label>
+            </div>
+            <div class="options">
+                <input id="q2-alternativa-b" name="q2" value="b" type="radio">
+                <label for="q2-alternativa-b">Gosto de vez em quando.</label>
+            </div>
+            <div class="options">
+                <input id="q2-alternativa-c" name="q2" value="c" type="radio">
+                <label for="q2-alternativa-c">Não me importo.</label>
+            </div>
+            <div class="options">
+                <input id="q2-alternativa-d" name="q2" value="d" type="radio">
+                <label for="q2-alternativa-d">Não gosto muito.</label>
+            </div>
+            <div class="options">
+                <input id="q2-alternativa-e" name="q2" value="e" type="radio">
+                <label for="q2-alternativa-e">Odeio!</label>
+            </div>
+        </div>
+
+        <!-- Pergunta 3 -->
+        <div class="question">
+            <p class="pergunta">3. Prefere filmes clássicos ou contemporâneos?</p>
+            <div class="options">
+                <input id="q3-alternativa-a" name="q3" value="a" type="radio">
+                <label for="q3-alternativa-a">Clássicos</label>
+            </div>
+            <div class="options">
+                <input id="q3-alternativa-b" name="q3" value="b" type="radio">
+                <label for="q3-alternativa-b">Contemporâneos</label>
+            </div>
+            <div class="options">
+                <input id="q3-alternativa-c" name="q3" value="c" type="radio">
+                <label for="q3-alternativa-c">Não tenho preferência.</label>
+            </div>
+            <div class="options">
+                <input id="q3-alternativa-d" name="q3" value="d" type="radio">
+                <label for="q3-alternativa-d">Depende do filme.</label>
+            </div>
+            <div class="options">
+                <input id="q3-alternativa-e" name="q3" value="e" type="radio">
+                <label for="q3-alternativa-e">Não assisto muitos filmes.</label>
+            </div>
+        </div>
+
+        <!-- Pergunta 4 -->
+        <div class="question">
+            <p class="pergunta">4. Qual tipo de protagonista você prefere?</p>
+            <div class="options">
+                <input id="q4-alternativa-a" name="q4" value="a" type="radio">
+                <label for="q4-alternativa-a">Masculino</label>
+            </div>
+            <div class="options">
+                <input id="q4-alternativa-b" name="q4" value="b" type="radio">
+                <label for="q4-alternativa-b">Feminino</label>
+            </div>
+            <div class="options">
+                <input id="q4-alternativa-c" name="q4" value="c" type="radio">
+                <label for="q4-alternativa-c">Não tenho preferência.</label>
+            </div>
+            <div class="options">
+                <input id="q4-alternativa-d" name="q4" value="d" type="radio">
+                <label for="q4-alternativa-d">Dupla masculina/feminina</label>
+            </div>
+            <div class="options">
+                <input id="q4-alternativa-e" name="q4" value="e" type="radio">
+                <label for="q4-alternativa-e">Outro (especifique)</label>
+            </div>
+        </div>
+
+        <!-- Pergunta 5 -->
+        <div class="question">
+            <p class="pergunta">5. Qual final de filme você acha mais emocionante?</p>
+            <div class="options">
+                <input id="q5-alternativa-a" name="q5" value="a" type="radio">
+                <label for="q5-alternativa-a">Final Feliz</label>
+            </div>
+            <div class="options">
+                <input id="q5-alternativa-b" name="q5" value="b" type="radio">
+                <label for="q5-alternativa-b">Final Surpreendente</label>
+            </div>
+            <div class="options">
+                <input id="q5-alternativa-c" name="q5" value="c" type="radio">
+                <label for="q5-alternativa-c">Final Aberto</label>
+            </div>
+            <div class="options">
+                <input id="q5-alternativa-d" name="q5" value="d" type="radio">
+                <label for="q5-alternativa-d">Final Triste</label>
+            </div>
+            <div class="options">
+                <input id="q5-alternativa-e" name="q5" value="e" type="radio">
+                <label for="q5-alternativa-e">Não tenho preferência.</label>
+            </div>
+        </div>
+
+        <!-- Pergunta 6 -->
+        <div class="question">
+            <p class="pergunta">6. Como você se sente sobre filmes de comédia romântica?</p>
+            <div class="options">
+                <input id="q6-alternativa-a" name="q6" value="a" type="radio">
+                <label for="q6-alternativa-a">Amo!</label>
+            </div>
+            <div class="options">
+                <input id="q6-alternativa-b" name="q6" value="b" type="radio">
+                <label for="q6-alternativa-b">Gosto de vez em quando.</label>
+            </div>
+            <div class="options">
+                <input id="q6-alternativa-c" name="q6" value="c" type="radio">
+                <label for="q6-alternativa-c">Não me importo.</label>
+            </div>
+            <div class="options">
+                <input id="q6-alternativa-d" name="q6" value="d" type="radio">
+                <label for="q6-alternativa-d">Não gosto muito.</label>
+            </div>
+            <div class="options">
+                <input id="q6-alternativa-e" name="q6" value="e" type="radio">
+                <label for="q6-alternativa-e">Não suporto!</label>
+            </div>
+        </div>
+
+        <!-- Pergunta 7 -->
+        <div class="question">
+            <p class="pergunta">7. Qual é o seu diretor de filmes favorito?</p>
+            <div class="options">
+                <input id="q7-alternativa-a" name="q7" value="a" type="radio">
+                <label for="q7-alternativa-a">Christopher Nolan</label>
+            </div>
+            <div class="options">
+                <input id="q7-alternativa-b" name="q7" value="b" type="radio">
+                <label for="q7-alternativa-b">Quentin Tarantino</label>
+            </div>
+            <div class="options">
+                <input id="q7-alternativa-c" name="q7" value="c" type="radio">
+                <label for="q7-alternativa-c">Martin Scorsese</label>
+            </div>
+            <div class="options">
+                <input id="q7-alternativa-d" name="q7" value="d" type="radio">
+                <label for="q7-alternativa-d">Greta Gerwig</label>
+            </div>
+            <div class="options">
+                <input id="q7-alternativa-e" name="q7" value="e" type="radio">
+                <label for="q7-alternativa-e">Outro (especifique)</label>
+            </div>
+        </div>
+
+        <!-- Pergunta 8 -->
+        <div class="question">
+            <p class="pergunta">8. Você gosta de filmes de ação com muita adrenalina?</p>
+            <div class="options">
+                <input id="q8-alternativa-a" name="q8" value="a" type="radio">
+                <label for="q8-alternativa-a">Sim, adoro!</label>
+            </div>
+            <div class="options">
+                <input id="q8-alternativa-b" name="q8" value="b" type="radio">
+                <label for="q8-alternativa-b">Sim, gosto.</label>
+            </div>
+            <div class="options">
+                <input id="q8-alternativa-c" name="q8" value="c" type="radio">
+                <label for="q8-alternativa-c">Não me importo.</label>
+            </div>
+            <div class="options">
+                <input id="q8-alternativa-d" name="q8" value="d" type="radio">
+                <label for="q8-alternativa-d">Não muito.</label>
+            </div>
+            <div class="options">
+                <input id="q8-alternativa-e" name="q8" value="e" type="radio">
+                <label for="q8-alternativa-e">Não suporto.</label>
+            </div>
+        </div>
+
+        <!-- Pergunta 9 -->
+        <div class="question">
+            <p class="pergunta">9. Qual é o seu ator ou atriz favorito(a)?</p>
+            <div class="options">
+                <input id="q9-alternativa-a" name="q9" value="a" type="radio">
+                <label for="q9-alternativa-a">Tom Hanks</label>
+            </div>
+            <div class="options">
+                <input id="q9-alternativa-b" name="q9" value="b" type="radio">
+                <label for="q9-alternativa-b">Meryl Streep</label>
+            </div>
+            <div class="options">
+                <input id="q9-alternativa-c" name="q9" value="c" type="radio">
+                <label for="q9-alternativa-c">Leonardo DiCaprio</label>
+            </div>
+            <div class="options">
+                <input id="q9-alternativa-d" name="q9" value="d" type="radio">
+                <label for="q9-alternativa-d">Scarlett Johansson</label>
+            </div>
+            <div class="options">
+                <input id="q9-alternativa-e" name="q9" value="e" type="radio">
+                <label for="q9-alternativa-e">Outro (especifique)</label>
+            </div>
+        </div>
+        
+        <!-- Pergunta 10 -->
+        <div class="question">
+            <p class="pergunta">10. Você prefere filmes baseados em fatos reais ou pura ficção?</p>
+            <div class="options">
+                <input id="q10-alternativa-a" name="q10" value="a" type="radio">
+                <label for="q10-alternativa-a">Baseados em fatos reais</label>
+            </div>
+            <div class="options">
+                <input id="q10-alternativa-b" name="q10" value="b" type="radio">
+                <label for="q10-alternativa-b">Pura ficção</label>
+            </div>
+            <div class="options">
+                <input id="q10-alternativa-c" name="q10" value="c" type="radio">
+                <label for="q10-alternativa-c">Não tenho preferência.</label>
+            </div>
+            <div class="options">
+                <input id="q10-alternativa-d" name="q10" value="d" type="radio">
+                <label for="q10-alternativa-d">Depende do filme.</label>
+            </div>
+            <div class="options">
+                <input id="q10-alternativa-e" name="q10" value="e" type="radio">
+                <label for="q10-alternativa-e">Não assisto muitos filmes.</label>
+            </div>
+        </div>
+        <div class="submit-button">
+            <input type="submit" value="Enviar Respostas">
+        </div>
+
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
