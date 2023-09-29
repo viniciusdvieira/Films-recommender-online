@@ -6,25 +6,11 @@
     <title>recommendation</title>
 </head>
 <body>
-    <div class="container">
-        <h1>filme recomendado</h1>
-        <table>
-            <tr>
-                <th>id</th>
-                <th>nome</th>
-                <th>genero</th>
-                <th>ano</th>
-            </tr>
-            {% for recommendation in recomendacao_filmes %}
-            <tr>
-                <td>{{recommendation.id_filme}}</td>
-                <td>{{recommendation.nome}} </td>
-                <td>{{recommendation.genero}} </td>
-                <td>{{recommendation.ano}} </td>
-            </tr>
-            {% endfor %}
-        </table>
-
-    </div>
+    <h1>Recomendação de Filme</h1>
+    {% if recomendacao_filme %}
+        <p>Com base nas suas respostas, recomendamos o seguinte filme: {{ recomendacao_filme }}</p>
+    {% else %}
+        <p>Não foi possível obter uma recomendação de filme.</p>
+    {% endif %}
 </body>
 </html>
