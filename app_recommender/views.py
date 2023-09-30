@@ -1,11 +1,12 @@
 
 from django.shortcuts import render, redirect
 from .forms import PerguntasForm
-from config import API_KEY  # Importe a chave API
+from config import API_KEY 
 import requests
-from .models import RespostaUsuario
+from .models import RespostasUsuario
+from django.http import JsonResponse
 
-# Create your views here.
+
 def home(request):
     return render(request,'src/index.html')
 
@@ -17,7 +18,7 @@ def obter_recomendacao_filme(respostas):
     link = "https://api.openai.com/v1/chat/completions"
     id_modelo = "gpt-3.5-turbo"
 
-    # Mapeamento das respostas completas com base nas opções disponíveis
+    
     mapeamento_respostas = {
         'q1': {'a': 'Ação', 'b': 'Comédia', 'c': 'Drama', 'd': 'Ficção Científica', 'e': 'Romance'},
         'q2': {'a': 'Adoro!', 'b': 'Gosto de vez em quando.', 'c': 'Não me importo.', 'd': 'Não gosto muito.', 'e': 'Odeio!'},
@@ -25,13 +26,13 @@ def obter_recomendacao_filme(respostas):
         'q4': {'a': 'Masculino', 'b': 'Feminino', 'c': 'Não tenho preferência.', 'd': 'Dupla masculina/feminina', 'e': 'Outro (especifique)'},
         'q5': {'a': 'Final Feliz', 'b': 'Final Surpreendente', 'c': 'Final Aberto', 'd': 'Final Triste', 'e': 'Não tenho preferência.'},
         'q6': {'a': 'Amo!', 'b': 'Gosto de vez em quando.', 'c': 'Não me importo.', 'd': 'Não gosto muito.', 'e': 'Não suporto!'},
-        'q7': {'a': 'Christopher Nolan', 'b': 'Quentin Tarantino', 'c': 'Martin Scorsese', 'd': 'Greta Gerwig', 'e': 'Outro (especifique)'},
+        'q7': {'a': 'Christopher Nolan', 'b': 'Quentin Tarantino', 'c': 'Martin Scorsese', 'd': 'Greta Gerwig', 'e': 'Não tenho preferencia'},
         'q8': {'a': 'Sim, adoro!', 'b': 'Sim, gosto.', 'c': 'Não me importo.', 'd': 'Não muito.', 'e': 'Não suporto.'},
-        'q9': {'a': 'Tom Hanks', 'b': 'Meryl Streep', 'c': 'Leonardo DiCaprio', 'd': 'Scarlett Johansson', 'e': 'Outro (especifique)'},
+        'q9': {'a': 'Tom Hanks', 'b': 'Meryl Streep', 'c': 'Leonardo DiCaprio', 'd': 'Scarlett Johansson', 'e': 'Não tenho preferencia'},
         'q10': {'a': 'Baseados em fatos reais', 'b': 'Pura ficção', 'c': 'Não tenho preferência.', 'd': 'Depende do filme.', 'e': 'Não assisto muitos filmes.'},
     }
 
-    # Lista de perguntas
+    
     perguntas = [
         "Qual é o seu gênero de filme preferido?",
         "Como você se sente sobre filmes de terror?",
@@ -61,11 +62,10 @@ def obter_recomendacao_filme(respostas):
 
     mensagem_final = [
         {"role": "assistant", "content": "Recomende um filme com base nas seguintes respostas:"},
-        {"role": "system", "content": "Você é um assistente de recomendação de filmes."}
+        {"role": "system", "content": "Você é um assistente de recomendação de filmes. Não utilize informações anteriores dessa conversa para recomendar um novo filme"}
     ]
 
     mensagens.extend(mensagem_final)
-    #print(mensagens)
     
     body_mensagem = {
         "model": id_modelo,
@@ -90,18 +90,32 @@ def recomendacao_filmes(request):
         if form.is_valid():
             respostas = form.cleaned_data
 
-            # Chamar a função para obter a recomendação do filme
+            
             recomendacao_filme = obter_recomendacao_filme(respostas)
 
             if recomendacao_filme:
-                # Salvar as respostas do usuário no banco de dados
-                usuario = request.user if request.user.is_authenticated else None
-                for pergunta, resposta in respostas.items():
-                    RespostaUsuario.objects.create(
-                        usuario=usuario,
-                        pergunta=pergunta,
-                        resposta=resposta
-                    )
+                if '"' in recomendacao_filme:
+                    nome_filme = recomendacao_filme.split('"')[1]
+                else:
+                    nome_filme = recomendacao_filme
+
+            if recomendacao_filme:
+                
+                resposta_usuario = RespostasUsuario(
+                    genero_filme_preferido=respostas['q1'],
+                    sentimento_filmes_terror=respostas['q2'],
+                    preferencia_filmes_contemporaneos=respostas['q3'],
+                    protagonista_preferido=respostas['q4'],
+                    final_emocionante_preferido=respostas['q5'],
+                    sentimento_filmes_comedia_romantica=respostas['q6'],
+                    diretor_favorito=respostas['q7'],
+                    gosto_filmes_acao_adrenalina=respostas['q8'],
+                    ator_atriz_favorito=respostas['q9'],
+                    preferencia_filmes_fatos_reais_ficcao=respostas['q10'],
+                    recomendacao_filme=nome_filme 
+                )
+                
+                resposta_usuario.save()
 
                 return render(request, 'respostas/index2.html', {'recomendacao_filme': recomendacao_filme})
 
@@ -111,4 +125,5 @@ def recomendacao_filmes(request):
     return render(request, 'src/index.html', {'form': form})
 
 
-#TODO terminar o banco de resposta, e fazer o request do imdb, fazer a api ficar em modo unico 
+
+#TODO fazer o request do imdb, fazer a api ficar em modo unico 
