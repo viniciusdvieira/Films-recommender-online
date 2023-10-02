@@ -6,11 +6,12 @@
     <title>recommendation</title>
 </head>
 <body>
-    <h1>Recomendação de Filme</h1>
-    {% if recomendacao_filme %}
-        <p>Com base nas suas respostas, recomendamos o seguinte filme: {{ recomendacao_filme }}</p>
+    {% if filme %}
+    <h1>{{ filme.title }}</h1>
+    <img src="https://image.tmdb.org/t/p/w500/{{ filme.poster_path }}" alt="{{ filme.title }} Capa">
+    <p>{{ filme.overview }}</p>
     {% else %}
-        <p>Não foi possível obter uma recomendação de filme.</p>
+    <p>Filme não encontrado.</p>
     {% endif %}
 </body>
 </html>
