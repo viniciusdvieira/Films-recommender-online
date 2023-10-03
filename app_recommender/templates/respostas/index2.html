@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="pr-br">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>recommendation</title>
+    <title>Recomendação</title>
 </head>
 <body>
+    <a href="{% url 'home' %}">Voltar para a Página Inicial</a>
     {% if filme %}
     <h1>{{ filme.title }}</h1>
     <img src="https://image.tmdb.org/t/p/w500/{{ filme.poster_path }}" alt="{{ filme.title }} Capa">
+    <p>Duração: {{ filme.runtime }} minutos</p>
+    <p>
+        Gêneros:
+        {% for genero in filme.genres %}
+            {{ genero.name }}
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
     <p>{{ filme.overview }}</p>
+    <p>Data de Lançamento: {{ filme.release_date }}</p>
+    <p>Nota Média: {{ filme.vote_average|floatformat:1 }}</p>
+    
+
+    <h2>Elenco Principal</h2>
+    <ul>
+        {% for ator in filme.cast %}
+            <li>
+                <img src="https://image.tmdb.org/t/p/w185/{{ ator.profile_path }}" alt="{{ ator.name }} Foto">
+                <p>{{ ator.name }}</p>
+            </li>
+        {% endfor %}
+    </ul>
     {% else %}
     <p>Filme não encontrado.</p>
     {% endif %}

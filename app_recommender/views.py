@@ -93,7 +93,7 @@ def obter_recomendacao_filme(respostas):
 
     mensagem_final = [
         {"role": "assistant", "content": "Recomende um filme com base nas seguintes respostas:"},
-        {"role": "system", "content": "Você é um assistente de recomendação de filmes. Não utilize informações anteriores dessa conversa para recomendar um novo filme"}
+        {"role": "system", "content": "Você é um assistente de recomendação de filmes.Me de somento o nome do filme. Não utilize informações anteriores dessa conversa para recomendar um novo filme"}
     ]
 
     mensagens.extend(mensagem_final)
@@ -166,4 +166,4 @@ def recomendacao_filmes(request):
 
 
 
-#TODO mudar a maneira de como esta fazendo a a recomendação dos filmes, melhorar o design em geral, melhorar a resposta do chatgpt pois ele esta recomendando um texto e utilizando apenas o nome
+#TODO mudar a maneira de como esta fazendo a a recomendação dos filmes, melhorar o design em geral, fazer o bemdito diretor aparecer
