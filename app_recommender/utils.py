@@ -24,13 +24,6 @@ def obter_informacoes_filme_por_nome(nome_filme):
                     details_data = details_response.json()
                     credits_data = credits_response.json()
 
-                    # Obtendo o diretor do filme
-                    diretor = None
-                    for equipe in details_data.get('crew', []):
-                        if equipe['job'] == 'Director':
-                            diretor = equipe['name']
-                            break
-
                     # Obtendo a duração do filme
                     duracao = details_data.get('runtime', 0)
 
@@ -46,7 +39,6 @@ def obter_informacoes_filme_por_nome(nome_filme):
                         }
                         elenco_principal.append(ator_info)
 
-                    
                     filme['cast'] = elenco_principal
                     filme['runtime'] = duracao  # Add movie duration
                     filme['genres'] = generos  # Add movie genres

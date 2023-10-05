@@ -1,12 +1,19 @@
 from django.shortcuts import render
 from .utils import obter_informacoes_filme_por_nome
 from .forms import PerguntasForm
-from config import API_KEY 
 import requests
 from .models import RespostasUsuario
 from django.http import JsonResponse
 from cachetools import LRUCache
 import hashlib
+import os
+
+from dotenv import load_dotenv
+load_dotenv(override=True)
+keygpt = os.getenv("API_KEY")
+
+
+
 
 recommendation_cache = LRUCache(maxsize=100)  # Cache com um tempo de vida de 1 hora (3600 segundos)
 
@@ -34,7 +41,7 @@ def obter_recomendacao_filme(respostas):
     if cached_recommendation:
         return cached_recommendation
 
-    headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+    headers = {"Authorization": f"Bearer {keygpt}", "Content-Type": "application/json"}
     link = "https://api.openai.com/v1/chat/completions"
     id_modelo = "gpt-3.5-turbo"
 
@@ -74,16 +81,6 @@ def obter_recomendacao_filme(respostas):
         mensagens_formatadas.append(pergunta_formatada)
         print(f"Pergunta {idx + 1}: {pergunta_formatada}")
 
-    # Montar as mensagens com perguntas e respostas formatadas
-    mensagens = []
-    for pergunta_formatada in mensagens_formatadas:
-        mensagem_pergunta = {"role": "user", "content": pergunta_formatada}
-        mensagens.extend([mensagem_pergunta])
-
-    mensagem_final = [
-        {"role": "assistant", "content": "Recomende um filme com base nas seguintes respostas:"},
-        {"role": "system", "content": "Você é um assistente de recomendação de filmes. Não utilize informações anteriores dessa conversa para recomendar um novo filme"}
-    ]
 
     # Montar as mensagens com perguntas e respostas formatadas
     mensagens = []
@@ -97,6 +94,7 @@ def obter_recomendacao_filme(respostas):
     ]
 
     mensagens.extend(mensagem_final)
+    print(mensagens)
 
     body_mensagem = {
         "model": id_modelo,
@@ -126,10 +124,10 @@ def recomendacao_filmes(request):
         form = PerguntasForm(request.POST)
         if form.is_valid():
             respostas = form.cleaned_data
-
+            
             # Obter a recomendação de filme do chatbot (nome_filme é obtido da API do chatbot)
             recomendacao_filme = obter_recomendacao_filme(respostas)
-
+            print(recomendacao_filme)
             if recomendacao_filme:
                 if '"' in recomendacao_filme:
                     nome_filme = recomendacao_filme.split('"')[1]
@@ -166,4 +164,4 @@ def recomendacao_filmes(request):
 
 
 
-#TODO mudar a maneira de como esta fazendo a a recomendação dos filmes, melhorar o design em geral, fazer o bemdito diretor aparecer
+#TODO melhorar o design em geral, fazer o bemdito diretor aparecer

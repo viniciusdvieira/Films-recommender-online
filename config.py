@@ -1,1 +1,0 @@
-API_KEY = "Não tem nada aqui"

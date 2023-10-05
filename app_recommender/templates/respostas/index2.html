@@ -22,7 +22,7 @@
     <p>Data de Lançamento: {{ filme.release_date }}</p>
     <p>Nota Média: {{ filme.vote_average|floatformat:1 }}</p>
     
-
+    
     <h2>Elenco Principal</h2>
     <ul>
         {% for ator in filme.cast %}
