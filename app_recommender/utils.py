@@ -39,9 +39,62 @@ def obter_informacoes_filme_por_nome(nome_filme):
                         }
                         elenco_principal.append(ator_info)
 
+                        
+                    # Obtendo o nome do diretor
+                    diretor = None
+                    diretor_imagem = None
+                    for membro_equipe in credits_data.get('crew', []):
+                        if membro_equipe['job'] == 'Director':
+                            diretor = membro_equipe['name']
+                            diretor_imagem = membro_equipe.get('profile_path')  
+                            break
+                    
+
+                    # Obtendo informações sobre os vídeos associados ao filme
+                    videos_url = f'{BASE_URL_TMDB}/movie/{filme_id}/videos'
+                    params = {'api_key': API_KEY_TMDB, 'language': 'pt-BR'}
+                    videos_response = requests.get(videos_url, params=params)
+
+                    if videos_response.status_code == 200:
+                        videos_data = videos_response.json()
+                        trailers = [video for video in videos_data.get('results', []) if video['type'] == 'Trailer']
+
+                        # Escolhendo o primeiro trailer, se disponível
+                        if trailers:
+                            trailer_id = trailers[0]['key']
+                            filme['trailer_id'] = trailer_id  # Adicionando o ID do trailer
+
+
+
+                    # Classificação por Idade
+                    classificacao = filme.get('certification', 'Não disponível')
+
+                    # Idioma Original
+                    idioma_original = filme.get('original_language', 'Não disponível')
+
+                    # Links para Redes Sociais
+                    links_redes_sociais = filme.get('external_ids', {})
+                    twitter = links_redes_sociais.get('twitter_id', 'Não disponível')
+                    facebook = links_redes_sociais.get('facebook_id', 'Não disponível')
+                    instagram = links_redes_sociais.get('instagram_id', 'Não disponível')
+
+                    # Recomendações de Filmes Relacionados
+                    recomendacoes_relacionadas = requests.get(f'{BASE_URL_TMDB}/movie/{filme_id}/recommendations', params=params)
+                    if recomendacoes_relacionadas.status_code == 200:
+                        recomendacoes_data = recomendacoes_relacionadas.json()
+                        filmes_relacionados = recomendacoes_data.get('results', [])
+
                     filme['cast'] = elenco_principal
-                    filme['runtime'] = duracao  # Add movie duration
-                    filme['genres'] = generos  # Add movie genres
+                    filme['runtime'] = duracao
+                    filme['genres'] = generos
+                    filme['diretor'] = diretor
+                    filme['diretor_imagem'] = diretor_imagem
+                    filme['classificacao'] = classificacao
+                    filme['idioma_original'] = idioma_original
+                    filme['twitter'] = twitter
+                    filme['facebook'] = facebook
+                    filme['instagram'] = instagram
+                    filme['filmes_relacionados'] = filmes_relacionados
 
                     return filme
 

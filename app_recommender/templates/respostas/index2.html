@@ -22,6 +22,11 @@
     <p>Data de Lançamento: {{ filme.release_date }}</p>
     <p>Nota Média: {{ filme.vote_average|floatformat:1 }}</p>
     
+    <h2>Diretor</h2>
+    <p>{{ filme.diretor }}</p>
+    {% if filme.diretor_imagem %}
+    <img src="https://image.tmdb.org/t/p/w185/{{ filme.diretor_imagem }}" alt="{{ filme.diretor }} Foto">
+    {% endif %}
     
     <h2>Elenco Principal</h2>
     <ul>
@@ -35,5 +40,30 @@
     {% else %}
     <p>Filme não encontrado.</p>
     {% endif %}
+
+    <h2>Classificação por Idade</h2>
+    <p>{{ filme.classificacao }}</p>
+
+    <h2>Idioma Original</h2>
+    <p>{{ filme.idioma_original }}</p>
+
+    <h2>Links para Redes Sociais</h2>
+    <p>Twitter: {{ filme.twitter }}</p>
+    <p>Facebook: {{ filme.facebook }}</p>
+    <p>Instagram: {{ filme.instagram }}</p>
+
+    <h2>Filmes Relacionados</h2>
+    <ul>
+        {% for filme_relacionado in filme.filmes_relacionados %}
+            <li>{{ filme_relacionado.title }}</li>
+        {% endfor %}
+    </ul>
+
+
+    {% if filme.trailer_id %}
+    <h2>Trailer</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ filme.trailer_id }}" frameborder="0" allowfullscreen></iframe>
+    {% endif %}
+
 </body>
 </html>
