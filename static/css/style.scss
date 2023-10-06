@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --cor1: #05F26C;
+    --cor2: #03A64A;
+    --cor3: #60BF89;
+    --cor4: #01260E;
+    --cor5: #0D0D0D;
+
+    --font-padrao: 'Montserrat', sans-serif;
+}
+
+.bodyprin{
+    background-color: var(--cor4);
+}
+
+header{
+    background-color: var(--cor5);
+    padding-bottom: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 15px;
+}
+
+
+nav > a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 12px;
+    margin: 5px;
+}
+
+.navopcoes:hover  {
+    
+    color: var(--cor4);
+    text-decoration: none;
+    background-color: var(--cor1);
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+#iconnav {
+    color: var(--cor1);
+    transition: color 0.5s; 
+    padding-right: 8px;
+}
+
+.navopcoes:hover #iconnav {
+    color: var(--cor4);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.options input{
+    display: none;
+}
+
+.options input + label::before{
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: black;
+    border: 1px solid gray;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.options input:checked +label::before{
+    background-color: var(--cor1);
+}
+
+
+.submit-button {
+    text-align: center;
+}
+
+.pergunta{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.bn632-hover {
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.bn632-hover:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    color: white;
+}
+
+.bn632-hover:focus {
+    outline: none;
+}
+
+.bn632-hover.bn22 {
+    background-image: linear-gradient(
+    to right,
+    #05F26C,
+    #3cba92,
+    #30dd8a,
+    #2bb673
+    );
+    box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+}
