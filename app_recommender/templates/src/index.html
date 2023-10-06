@@ -6,17 +6,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <script src="https://kit.fontawesome.com/f2f22e7c20.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <title>Recomendador de filmes</title>
 </head>
-<body>
+<body class="bodyprin">
 <header>
     <nav>
-        <a href="#">Filmes</a>
-        <a href="#">Jogos</a>
-        <a href="#">Livros</a>
+        
+        <a href="#" class="navopcoes"><i class="fa-solid fa-film fa-lg" id= "iconnav"></i> Filmes</a>
+        <a href="#" class="navopcoes"><i class="fa-solid fa-gamepad fa-lg" id="iconnav"></i>Jogos</a>
+        <a href="#" class="navopcoes"><i class="fa-solid fa-book fa-lg" id="iconnav"></i>Livros</a>
     </nav>
 </header>
 
@@ -274,14 +275,16 @@
             </div>
         </div>
         <div class="submit-button">
-            <input type="submit" value="Enviar Respostas">
+            <button class="bn632-hover bn22" type="submit">Enviar Respostas</button>
         </div>
-
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
