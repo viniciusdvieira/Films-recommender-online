@@ -1,6 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box !important;
 }
 
 :root {
@@ -12,8 +13,131 @@
   --font-padrao: "Montserrat", sans-serif;
 }
 
+html, .bodyprin {
+  height: 100%;
+}
+
 .bodyprin {
-  background-color: var(--cor4);
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: #171717;
+  color: #000;
+  line-height: 1.6;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.lines {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: auto;
+  width: 50vw;
+}
+
+.line {
+  position: fixed;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.line::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #05F26C 75%, #03A64A 100%);
+  -webkit-animation: drop 3s linear infinite;
+          animation: drop 3s linear infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.line:nth-child(1) {
+  margin-left: -22%;
+}
+.line:nth-child(2) {
+  margin-left: -17%;
+}
+.line:nth-child(3) {
+  margin-left: -12%;
+}
+.line:nth-child(4) {
+  margin-left: -7%;
+}
+
+
+.line:nth-child(5) {
+  margin-left: 57%;
+}
+.line:nth-child(6) {
+  margin-left: 62%;
+}
+.line:nth-child(7) {
+  margin-left: 67%;
+}
+.line:nth-child(8) {
+  margin-left: 72%;
+}
+
+.line:nth-child(1)::after {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.line:nth-child(2)::after {
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+.line:nth-child(3)::after {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+.line:nth-child(4)::after {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.line:nth-child(5)::after {
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+.line:nth-child(6)::after {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+.line:nth-child(7)::after {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+.line:nth-child(8)::after {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+@-webkit-keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
 }
 
 header {
@@ -22,10 +146,10 @@ header {
 }
 
 nav {
-  display: flex;
   justify-content: center;
   text-align: center;
   padding-top: 15px;
+  z-index: 1;
 }
 
 nav > a {
