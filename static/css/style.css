@@ -29,6 +29,7 @@ html, .bodyprin {
 }
 
 .lines {
+  position: fixed;
   top: auto;
   left: 0;
   right: 0;
@@ -37,10 +38,10 @@ html, .bodyprin {
 }
 
 .line {
-  position: absolute;
+  position: fixed;
   width: 2px;
   height: 100%;
-  top: auto;
+  top: 0;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
@@ -142,17 +143,17 @@ html, .bodyprin {
 }
 
 
-
-
-header {
-  background-color: var(--cor5);
-  padding-bottom: 20px;
+header{
+  height: 100vh;
 }
+
+
 
 nav {
   justify-content: center;
   text-align: center;
   padding-top: 15px;
+  padding-bottom: 20px;
   z-index: 1;
 }
 
@@ -181,6 +182,16 @@ nav > a {
 
 .navopcoes:hover #iconnav {
   color: var(--cor4);
+}
+#spanlink{
+  display: flex;
+  justify-content: center;
+  margin-top: 25%;
+}
+#scrollLink{
+  text-decoration: none;
+  color: white;
+  
 }
 
 .container {

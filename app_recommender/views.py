@@ -164,4 +164,6 @@ def recomendacao_filmes(request):
 
 
 
-#TODO melhorar o design em geral, fazer o bemdito diretor aparecer
+#TODO Fazer o dos jogos e livros, mudar as questões, continuar a estilização, mudar o prompt da api gpt
+#api de jogos https://rawg.io/apidocs
+#api de livros https://developers.google.com/books?hl=pt-br

@@ -12,13 +12,17 @@
     <title>Recomendador de filmes</title>
 </head>
 <body class="bodyprin">
-<header>
+<header >
     <nav>
         <a href="#" class="navopcoes"><i class="fa-solid fa-film fa-lg" id= "iconnav"></i> Filmes</a>
         <a href="#" class="navopcoes"><i class="fa-solid fa-gamepad fa-lg" id="iconnav"></i>Jogos</a>
         <a href="#" class="navopcoes"><i class="fa-solid fa-book fa-lg" id="iconnav"></i>Livros</a>
     </nav>
+    <h1>escrever uma mensagem de bem vindo e colocar um fonte maneiro</h1>
+    <span id="spanlink"><a href="#formprin" id="scrollLink"><img src="{% static 'img/arrowdown.png'%}" alt="arrowdown"></a></span>
+    
 </header>
+
 <div class="lines"> 
     <div class="line left"></div>
     <div class="line left"></div>
@@ -29,7 +33,7 @@
     <div class="line right"></div>
     <div class="line right"></div>
 </div>
-<div class="container">
+<div class="container" id="formprin">
     <h1>Questionário Interativo</h1>
     <form id="quiz-form" method="post" action="{% url 'recomendation' %}">
         {% csrf_token %}
@@ -286,6 +290,8 @@
         </div>
     </form>
 </div>
+
+<script src="{% static 'js/script.js' %}"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
