@@ -29,39 +29,52 @@ html, .bodyprin {
 }
 
 .lines {
-  top: 0;
+  top: auto;
   left: 0;
   right: 0;
-  height: 100%;
   margin: auto;
   width: 50vw;
 }
 
 .line {
-  position: fixed;
-  width: 1px;
+  position: absolute;
+  width: 2px;
   height: 100%;
-  top: 0;
+  top: auto;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
+
+.line::before,
 .line::after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 15vh;
-  width: 100%;
-  top: -50%;
-  left: 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #05F26C 75%, #03A64A 100%);
-  -webkit-animation: drop 3s linear infinite;
-          animation: drop 3s linear infinite;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+ content: "";
+ display: block;
+ position: absolute;
+ height: 15vh;
+ width: 100%;
+ top: -50%;
+ left: 0;
+ background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #05F26C 75%, #03A64A 100%);
+ animation: drop 2s linear infinite;
+ animation-fill-mode: forwards;
+ animation-timing-function: linear;
 }
 
+.line::before {
+ animation-delay: 3s; 
+}
+
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+/*linhas esquerda*/
 .line:nth-child(1) {
   margin-left: -22%;
 }
@@ -75,7 +88,7 @@ html, .bodyprin {
   margin-left: -7%;
 }
 
-
+/*linhas direita*/
 .line:nth-child(5) {
   margin-left: 57%;
 }
@@ -89,56 +102,47 @@ html, .bodyprin {
   margin-left: 72%;
 }
 
+/*linhas esquerda*/
+.line:nth-child(1)::before,
 .line:nth-child(1)::after {
-  -webkit-animation-delay: 1s;
   animation-delay: 1s;
 }
+
+.line:nth-child(2)::before,
 .line:nth-child(2)::after {
-  -webkit-animation-delay: 1.5s;
   animation-delay: 1.5s;
 }
+
+.line:nth-child(3)::before,
 .line:nth-child(3)::after {
-  -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }
+
+.line:nth-child(4)::before,
 .line:nth-child(4)::after {
-  -webkit-animation-delay: 1s;
+  animation-delay: 2.5s;
+}
+
+/*linhas direita*/
+.line:nth-child(5)::before,
+.line:nth-child(5)::after {
+  animation-delay: 2.5s;
+}
+.line:nth-child(6)::before,
+.line:nth-child(6)::after {
+  animation-delay: 2s;
+}
+.line:nth-child(7)::before,
+.line:nth-child(7)::after {
+  animation-delay: 1.5s;
+}
+.line:nth-child(8)::before,
+.line:nth-child(8)::after {
   animation-delay: 1s;
 }
-.line:nth-child(5)::after {
-  -webkit-animation-delay: 1.5s;
-  animation-delay: 1.5s;
-}
-.line:nth-child(6)::after {
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
-}
-.line:nth-child(7)::after {
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
-}
-.line:nth-child(8)::after {
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
-}
 
-@-webkit-keyframes drop {
-  0% {
-    top: -50%;
-  }
-  100% {
-    top: 110%;
-  }
-}
 
-@keyframes drop {
-  0% {
-    top: -50%;
-  }
-  100% {
-    top: 110%;
-  }
-}
+
 
 header {
   background-color: var(--cor5);
