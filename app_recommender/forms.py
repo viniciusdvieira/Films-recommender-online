@@ -1,7 +1,7 @@
 from django import forms
 
 class PerguntasForm(forms.Form):
-    q1 = forms.ChoiceField(choices=(('a', 'Filmes'), ('b', 'Séries'), ('c', 'Documentários'), ('d', 'Novelas'), ('e', 'Outros')), widget=forms.RadioSelect)
+    q1 = forms.ChoiceField(choices=(('a', 'Filmes'), ('b', 'Séries'), ('c', 'Documentários'), ('d', 'Animações'), ('e', 'Outros')), widget=forms.RadioSelect)
 
     q2 = forms.ChoiceField(choices=(('a', 'Diretores renomados e premiados'), ('b', 'Diretores clássicos e atemporais'), ('c', 'Diretores contemporâneos em ascensão'), ('d', 'Diretores de mídia independente'), ('e', 'Não tenho preferência por tipo de diretor')), widget=forms.RadioSelect)
 

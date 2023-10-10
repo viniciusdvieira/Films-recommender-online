@@ -47,7 +47,7 @@ def obter_recomendacao_filme(respostas):
 
     
     mapeamento_respostas = {
-        'q1': {'a': 'Filmes', 'b': 'Séries', 'c': 'Documentários', 'd': 'Novelas', 'e': 'Outros'},
+        'q1': {'a': 'Filmes', 'b': 'Séries', 'c': 'Documentários', 'd': 'Animações', 'e': 'Outros'},
         'q2': {'a': 'Diretores renomados e premiados', 'b': 'Diretores clássicos e atemporais', 'c': 'Diretores contemporâneos em ascensão', 'd': 'Diretores de mídia independente', 'e': 'Não tenho preferência por tipo de diretor'},
         'q3': {'a': 'Curtametragem', 'b': 'Midias longos ', 'c': 'Duração padrão ', 'd': 'Depende do filme', 'e': 'Não tenho preferência quanto à duração'},
         'q4': {'a': 'Enredo cativante', 'b': 'Desenvolvimento de personagens', 'c': 'Atuação excepcional', 'd': 'Produção visual impressionante', 'e': 'Mensagem ou tema poderoso'},
