@@ -47,30 +47,30 @@ def obter_recomendacao_filme(respostas):
 
     
     mapeamento_respostas = {
-        'q1': {'a': 'Ação', 'b': 'Comédia', 'c': 'Drama', 'd': 'Ficção Científica', 'e': 'Romance'},
-        'q2': {'a': 'Adoro!', 'b': 'Gosto de vez em quando.', 'c': 'Não me importo.', 'd': 'Não gosto muito.', 'e': 'Odeio!'},
-        'q3': {'a': 'Clássicos', 'b': 'Contemporâneos', 'c': 'Não tenho preferência.', 'd': 'Depende do filme.', 'e': 'Não assisto muitos filmes.'},
-        'q4': {'a': 'Masculino', 'b': 'Feminino', 'c': 'Não tenho preferência.', 'd': 'Dupla masculina/feminina', 'e': 'Outro (especifique)'},
-        'q5': {'a': 'Final Feliz', 'b': 'Final Surpreendente', 'c': 'Final Aberto', 'd': 'Final Triste', 'e': 'Não tenho preferência.'},
-        'q6': {'a': 'Amo!', 'b': 'Gosto de vez em quando.', 'c': 'Não me importo.', 'd': 'Não gosto muito.', 'e': 'Não suporto!'},
-        'q7': {'a': 'Christopher Nolan', 'b': 'Quentin Tarantino', 'c': 'Martin Scorsese', 'd': 'Greta Gerwig', 'e': 'Não tenho preferencia'},
-        'q8': {'a': 'Sim, adoro!', 'b': 'Sim, gosto.', 'c': 'Não me importo.', 'd': 'Não muito.', 'e': 'Não suporto.'},
-        'q9': {'a': 'Tom Hanks', 'b': 'Meryl Streep', 'c': 'Leonardo DiCaprio', 'd': 'Scarlett Johansson', 'e': 'Não tenho preferencia'},
-        'q10': {'a': 'Baseados em fatos reais', 'b': 'Pura ficção', 'c': 'Não tenho preferência.', 'd': 'Depende do filme.', 'e': 'Não assisto muitos filmes.'},
+        'q1': {'a': 'Filmes', 'b': 'Séries', 'c': 'Documentários', 'd': 'Novelas', 'e': 'Outros'},
+        'q2': {'a': 'Diretores renomados e premiados', 'b': 'Diretores clássicos e atemporais', 'c': 'Diretores contemporâneos em ascensão', 'd': 'Diretores de mídia independente', 'e': 'Não tenho preferência por tipo de diretor'},
+        'q3': {'a': 'Curtametragem', 'b': 'Midias longos ', 'c': 'Duração padrão ', 'd': 'Depende do filme', 'e': 'Não tenho preferência quanto à duração'},
+        'q4': {'a': 'Enredo cativante', 'b': 'Desenvolvimento de personagens', 'c': 'Atuação excepcional', 'd': 'Produção visual impressionante', 'e': 'Mensagem ou tema poderoso'},
+        'q5': {'a': 'Fatos Reais', 'b': 'Ficção', 'c': 'Uma mistura dos dois', 'd': 'Depende do meu humor', 'e': 'Não tenho preferência'},
+        'q6': {'a': 'Noite', 'b': 'Tarde', 'c': 'Manhã', 'd': 'Finais de semana', 'e': 'Qualquer hora'},
+        'q7': {'a': 'Sozinho', 'b': 'Com a família', 'c': 'Com amigos', 'd': 'Com meu parceiro(a)', 'e': 'Não tenho preferência, depende da mídia'},
+        'q8': {'a': 'Nacional', 'b': 'Internacional', 'c': 'Com participação de brasileiros em produções internacionais', 'd': 'Não tenho preferência, depende da mídia', 'e': 'Gosto de todos igualmente'},
+        'q9': {'a': 'Mídia reflexiva e profunda', 'b': 'Mídia engraçada e leve', 'c': 'Mídia tensa e emocionante', 'd': 'Mídia intrigante e misteriosa', 'e': 'Mídia repleta de ação'},
+        'q10': {'a': 'Midias mais recentes', 'b': 'Midias clássicos e antigos', 'c': 'Gosto tanto de filmes recentes quanto de filmes clássicos', 'd': 'Depende do meu humor', 'e': 'Não tenho preferência'},
     }
 
     
     perguntas = [
-        "Qual é o seu gênero de filme preferido?",
-        "Como você se sente sobre filmes de terror?",
-        "Prefere filmes clássicos ou contemporâneos?",
-        "Qual tipo de protagonista você prefere?",
-        "Qual final de filme você acha mais emocionante?",
-        "Como você se sente sobre filmes de comédia romântica?",
-        "Qual é o seu diretor de filmes favorito?",
-        "Você gosta de filmes de ação com muita adrenalina?",
-        "Qual é o seu ator ou atriz favorito(a)?",
-        "Você prefere filmes baseados em fatos reais ou pura ficção?"
+        "Qual é o seu tipo preferido de mídia?",
+        "Qual é o seu tipo preferido de diretor de mídia?",
+        "Qual é a sua preferência em relação à duração da mídia?",
+        "O que você valoriza mais em um conteúdo audiovisual?",
+        "Você tende a preferir mídia baseada em fatos reais ou ficção completa?",
+        "Qual é o momento ideal para você consumir mídia?",
+        "Como você prefere consumir mídia?",
+        "Você tem preferência por mídia nacional ou internacional?",
+        "Que tipo de experiência midiática você está procurando agora?",
+        "Você tende a preferir Midias mais recentes ou filmes clássicos e antigos?",
     ]
 
     # Depurar e verificar as perguntas e respostas
@@ -81,6 +81,10 @@ def obter_recomendacao_filme(respostas):
         mensagens_formatadas.append(pergunta_formatada)
         print(f"Pergunta {idx + 1}: {pergunta_formatada}")
 
+    mensagem_final = [
+        {"role": "assistant", "content": "Recomende uma Midia com base nas seguintes respostas:"},
+        {"role": "system", "content": "Você é um assistente de recomendação de midias audiovisual.Me de somento o nome da midia. Não utilize informações anteriores dessa conversa para recomendar uma nova midia.A primeira pergunta é a mais importante logo sua reposta tambem, as outras reposta complementam a primeira"}
+    ]
 
     # Montar as mensagens com perguntas e respostas formatadas
     mensagens = []
@@ -88,10 +92,7 @@ def obter_recomendacao_filme(respostas):
         mensagem_pergunta = {"role": "user", "content": pergunta_formatada}
         mensagens.extend([mensagem_pergunta])
 
-    mensagem_final = [
-        {"role": "assistant", "content": "Recomende um filme com base nas seguintes respostas:"},
-        {"role": "system", "content": "Você é um assistente de recomendação de filmes.Me de somento o nome do filme. Não utilize informações anteriores dessa conversa para recomendar um novo filme"}
-    ]
+    
 
     mensagens.extend(mensagem_final)
     print(mensagens)
@@ -140,17 +141,17 @@ def recomendacao_filmes(request):
                 if filme:
                     # Salvar as respostas do usuário e a recomendação no banco de dados
                     resposta_usuario = RespostasUsuario(
-                        genero_filme_preferido=respostas['q1'],
-                        sentimento_filmes_terror=respostas['q2'],
-                        preferencia_filmes_contemporaneos=respostas['q3'],
-                        protagonista_preferido=respostas['q4'],
-                        final_emocionante_preferido=respostas['q5'],
-                        sentimento_filmes_comedia_romantica=respostas['q6'],
-                        diretor_favorito=respostas['q7'],
-                        gosto_filmes_acao_adrenalina=respostas['q8'],
-                        ator_atriz_favorito=respostas['q9'],
-                        preferencia_filmes_fatos_reais_ficcao=respostas['q10'],
-                        recomendacao_filme=nome_filme 
+                        pergunta1=respostas['q1'],
+                        pergunta2=respostas['q2'],
+                        pergunta3=respostas['q3'],
+                        pergunta4=respostas['q4'],
+                        pergunta5=respostas['q5'],
+                        pergunta6=respostas['q6'],
+                        pergunta7=respostas['q7'],
+                        pergunta8=respostas['q8'],
+                        pergunta9=respostas['q9'],
+                        pergunta10=respostas['q10'],
+                        recomendacao_filme=nome_filme
                     )
                     resposta_usuario.save()
 
@@ -167,3 +168,6 @@ def recomendacao_filmes(request):
 #TODO Fazer o dos jogos e livros, mudar as questões, continuar a estilização, mudar o prompt da api gpt
 #api de jogos https://rawg.io/apidocs
 #api de livros https://developers.google.com/books?hl=pt-br
+
+
+#alterações futuras: https://chat.openai.com/share/37b6da64-4145-4ce9-b114-1070cd8c5879 Este chat representa como seria a implementação da ia para ela gerar tambem as perguntas, como o tempo é pouco vai ficar para depois do projeto pronto
