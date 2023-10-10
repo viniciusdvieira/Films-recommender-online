@@ -54,7 +54,7 @@ def obter_recomendacao_filme(respostas):
         'q5': {'a': 'Fatos Reais', 'b': 'Ficção', 'c': 'Uma mistura dos dois', 'd': 'Depende do meu humor', 'e': 'Não tenho preferência'},
         'q6': {'a': 'Noite', 'b': 'Tarde', 'c': 'Manhã', 'd': 'Finais de semana', 'e': 'Qualquer hora'},
         'q7': {'a': 'Sozinho', 'b': 'Com a família', 'c': 'Com amigos', 'd': 'Com meu parceiro(a)', 'e': 'Não tenho preferência, depende da mídia'},
-        'q8': {'a': 'Nacional', 'b': 'Internacional', 'c': 'Com participação de brasileiros em produções internacionais', 'd': 'Não tenho preferência, depende da mídia', 'e': 'Gosto de todos igualmente'},
+        'q8': {'a': 'Nacional(Brasil)', 'b': 'Internacional', 'c': 'Com participação de brasileiros em produções internacionais', 'd': 'Não tenho preferência, depende da mídia', 'e': 'Gosto de todos igualmente'},
         'q9': {'a': 'Mídia reflexiva e profunda', 'b': 'Mídia engraçada e leve', 'c': 'Mídia tensa e emocionante', 'd': 'Mídia intrigante e misteriosa', 'e': 'Mídia repleta de ação'},
         'q10': {'a': 'Midias mais recentes', 'b': 'Midias clássicos e antigos', 'c': 'Gosto tanto de filmes recentes quanto de filmes clássicos', 'd': 'Depende do meu humor', 'e': 'Não tenho preferência'},
     }
@@ -83,7 +83,7 @@ def obter_recomendacao_filme(respostas):
 
     mensagem_final = [
         {"role": "assistant", "content": "Recomende uma Midia com base nas seguintes respostas:"},
-        {"role": "system", "content": "Você é um assistente de recomendação de midias audiovisual.Me de somento o nome da midia. Não utilize informações anteriores dessa conversa para recomendar uma nova midia.A primeira pergunta é a mais importante logo sua reposta tambem, as outras reposta complementam a primeira"}
+        {"role": "system", "content": "Você é um assistente de recomendação de midias audiovisual. Me de somento o nome da recomendação. Não utilize informações anteriores dessa conversa para recomendar uma nova midia.Cada resposta tem o mesmo peso, logo leve todas em consideração quando for indiacar"}
     ]
 
     # Montar as mensagens com perguntas e respostas formatadas
