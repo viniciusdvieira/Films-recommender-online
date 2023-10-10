@@ -18,7 +18,9 @@
         <a href="#" class="navopcoes"><i class="fa-solid fa-gamepad fa-lg" id="iconnav"></i>Jogos</a>
         <a href="#" class="navopcoes"><i class="fa-solid fa-book fa-lg" id="iconnav"></i>Livros</a>
     </nav>
-    <h1>escrever uma mensagem de bem vindo e colocar um fonte maneiro</h1>
+    <div class="title">
+        <h1 id="movie-title"></h1>
+    </div>
 
     <span id="spanlink"><a href="#formprin" id="scrollLink">~></a></span>
     
@@ -35,7 +37,6 @@
     <div class="line right"></div>
 </div>
 <div class="container" id="formprin">
-    <h1>Questionário Interativo</h1>
     <form id="quiz-form" method="post" action="{% url 'recomendation' %}">
         {% csrf_token %}
         <!-- Pergunta 1 -->
