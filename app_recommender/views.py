@@ -3,7 +3,6 @@ from .utils import obter_informacoes_filme_por_nome
 from .forms import PerguntasForm
 import requests
 from .models import RespostasUsuario
-from django.http import JsonResponse
 from cachetools import LRUCache
 import hashlib
 import os
@@ -47,7 +46,7 @@ def obter_recomendacao_filme(respostas):
 
     
     mapeamento_respostas = {
-        'q1': {'a': 'Filmes', 'b': 'Séries', 'c': 'Documentários', 'd': 'Animações', 'e': 'Outros'},
+        'q1': {'a': 'Filme', 'b': 'Série', 'c': 'Documentário', 'd': 'Animação(desenho animado)', 'e': 'Outros'},
         'q2': {'a': 'Diretores renomados e premiados', 'b': 'Diretores clássicos e atemporais', 'c': 'Diretores contemporâneos em ascensão', 'd': 'Diretores de mídia independente', 'e': 'Não tenho preferência por tipo de diretor'},
         'q3': {'a': 'Curtametragem', 'b': 'Midias longos ', 'c': 'Duração padrão ', 'd': 'Depende do filme', 'e': 'Não tenho preferência quanto à duração'},
         'q4': {'a': 'Enredo cativante', 'b': 'Desenvolvimento de personagens', 'c': 'Atuação excepcional', 'd': 'Produção visual impressionante', 'e': 'Mensagem ou tema poderoso'},
@@ -82,9 +81,10 @@ def obter_recomendacao_filme(respostas):
         print(f"Pergunta {idx + 1}: {pergunta_formatada}")
 
     mensagem_final = [
-        {"role": "assistant", "content": "Recomende uma Midia com base nas seguintes respostas:"},
-        {"role": "system", "content": "Você é um assistente de recomendação de midias audiovisual. Me de somento o nome da recomendação. Não utilize informações anteriores dessa conversa para recomendar uma nova midia.Cada resposta tem o mesmo peso, logo leve todas em consideração quando for indiacar"}
+        {"role": "assistant", "content": "Recomende uma mídia audiovisual com base nas seguintes respostas:"},
+        {"role": "system", "content": "Você é um assistente de recomendação de mídias audiovisuais. Concentre-se na primeira pergunta, pois ela é a mais importante logo as respsotas seguintes complementam a primeira. Evite recomendações repetidas.Não utilize informações de recomendações anteriores para recomendar uma nova"}
     ]
+
 
     # Montar as mensagens com perguntas e respostas formatadas
     mensagens = []
@@ -162,6 +162,7 @@ def recomendacao_filmes(request):
         form = PerguntasForm()
 
     return render(request, 'src/index.html', {'form': form})
+
 
 
 

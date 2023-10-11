@@ -161,12 +161,20 @@ header{
 
 
 
-nav {
+.navprin {
+  display: flex;
   justify-content: center;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 20px;
   z-index: 1;
+}
+
+
+#searchbox {
+  display: flex;
+  align-items: center; /* Centralizar verticalmente o formulário de pesquisa */
+  margin-left: 10px; /* Espaço entre os links e o formulário de pesquisa */
 }
 
 nav > a {

@@ -1,5 +1,9 @@
 from django import forms
 
+
+
+
+
 class PerguntasForm(forms.Form):
     q1 = forms.ChoiceField(choices=(('a', 'Filmes'), ('b', 'Séries'), ('c', 'Documentários'), ('d', 'Animações'), ('e', 'Outros')), widget=forms.RadioSelect)
 
