@@ -16,3 +16,11 @@ class RespostasUsuario(models.Model):
 
     def __str__(self):
         return f"Resposta de {self.data_resposta}"
+    
+
+class FilmePesquisado(models.Model):
+    nome_filme = models.CharField(max_length=255)
+    data_pesquisa = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.nome_filme

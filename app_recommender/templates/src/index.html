@@ -17,7 +17,14 @@
         <a href="#" class="navopcoes"><i class="fa-solid fa-film fa-lg" id= "iconnav"></i> Filmes</a>
         <a href="#" class="navopcoes"><i class="fa-solid fa-gamepad fa-lg" id="iconnav"></i>Jogos</a>
         <a href="#" class="navopcoes"><i class="fa-solid fa-book fa-lg" id="iconnav"></i>Livros</a>
-
+        <form method="get" action="{% url 'recomendation' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" name="q" placeholder="Pesquisar por nome do filme">
+            </div>
+            <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </form>
+        
     </nav>
 
     <div class="title">

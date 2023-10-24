@@ -6,7 +6,7 @@
     <title>Recomendação</title>
 </head>
 <body>
-    <a href="{% url 'home' %}">Voltar para a Página Inicial</a>
+    
     {% if filme %}
     <h1>{{ filme.title }}</h1>
     <img src="https://image.tmdb.org/t/p/w500/{{ filme.poster_path }}" alt="{{ filme.title }} Capa">
@@ -64,6 +64,7 @@
     <h2>Trailer</h2>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ filme.trailer_id }}" frameborder="0" allowfullscreen></iframe>
     {% endif %}
-
+    
+    <a href="{% url 'home' %}">Voltar para a Página Inicial</a>
 </body>
 </html>

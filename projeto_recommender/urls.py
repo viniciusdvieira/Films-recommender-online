@@ -8,8 +8,7 @@ urlpatterns = [
 
     path('respostas/', views.recomendacao_filmes, name='recomendation'),
 
-        # Rota para a página index2
-    path('index2/', views.index2, name='index2'),
+
 
     
 ]

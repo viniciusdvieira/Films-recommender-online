@@ -3,6 +3,7 @@ from .utils import obter_informacoes_filme_por_nome
 from .forms import PerguntasForm
 import requests
 from .models import RespostasUsuario
+from .models import FilmePesquisado
 from cachetools import LRUCache
 import hashlib
 import os
@@ -21,15 +22,7 @@ recommendation_cache = LRUCache(maxsize=100)  # Cache com um tempo de vida de 1 
 def home(request):
     return render(request,'src/index.html')
 
-def index2(request):
-    # Suponha que você tenha o nome do filme em nome_filme
-    nome_filme = "Nome do Filme"  # Substitua pelo nome do filme real
 
-    # Obtém informações do filme com base no nome
-    filme = obter_informacoes_filme_por_nome(nome_filme)
-
-    # Renderiza o template com as informações do filme
-    return render(request, 'respostas/index2.html', {'filme': filme})
 
 def obter_recomendacao_filme(respostas):
      # Crie uma chave única com base nas respostas do usuário para usar como chave de cache
@@ -160,8 +153,25 @@ def recomendacao_filmes(request):
 
     else:
         form = PerguntasForm()
+        nome_filme = request.GET.get('q')  # Obter o nome do filme da consulta GET
 
-    return render(request, 'src/index.html', {'form': form})
+        if nome_filme:
+            # Salvar o nome do filme pesquisado no banco de dados
+            pesquisa = FilmePesquisado(nome_filme=nome_filme)
+            pesquisa.save()
+
+            # Obter informações do filme com base no nome
+            filme = obter_informacoes_filme_por_nome(nome_filme)
+            
+            if filme:
+                # Renderizar a página 'index2.html' com informações do filme
+                return render(request, 'respostas/index2.html', {'filme': filme, 'form': form})
+
+    # Recuperar todas as pesquisas anteriores
+    pesquisas_anteriores = FilmePesquisado.objects.all().order_by('-data_pesquisa')
+    
+    return render(request, 'src/index.html', {'form': form, 'pesquisas_anteriores': pesquisas_anteriores})
+
 
 
 
