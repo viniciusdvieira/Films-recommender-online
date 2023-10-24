@@ -19,6 +19,7 @@
   --cor1: #05F26C;
   --cor2: #03A64A;
   --cor3: #60BF89;
+  --cor6: #004e22;
   --cor4: #01260E;
   --cor5: #0D0D0D;
   --font-padrao: "Montserrat", sans-serif;
@@ -171,12 +172,6 @@ header{
 }
 
 
-#searchbox {
-  display: flex;
-  align-items: center; /* Centralizar verticalmente o formulário de pesquisa */
-  margin-left: 10px; /* Espaço entre os links e o formulário de pesquisa */
-}
-
 nav > a {
   color: white;
   text-decoration: none;
@@ -204,12 +199,79 @@ nav > a {
   color: var(--cor4);
 }
 
+
+.searchBox {
+  position: static;
+  padding-top: 10px;
+}
+
+.searchBox.open .searchInput,
+.searchInput:focus {
+  color: black;
+
+}
+
+.searchButton {
+  color: var(--cor4);
+  border: none;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--cor1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding-right: 2px;
+  float: left;
+  padding: 0;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+
+.searchInput::placeholder {
+  color: black;
+}
+
+.searchBox:hover > .searchButton {
+  background: var(--cor4);
+  color: var(--cor1);
+  border-radius: 0%;
+  transition: 0.1s;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.searchBox:hover .searchInput {
+  width: 190px;
+  padding: 0 6px;
+}
+
+@media screen and (max-width: 620px) {
+  .searchBox.open .searchInput,
+  .searchInput:focus {
+      width: 150px;
+      padding: 0 6px;
+  }
+}
+
 #spanlink{
   display: flex;
   justify-content: center;
   margin-top: 25%;
 }
 #scrollLink{
+  position: fixed;
   text-decoration: none;
   color: var(--cor1);
   font-size: 30px;
