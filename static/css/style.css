@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-
+@import url("https://fonts.googleapis.com/css?family=Titan+One");
 
 @font-face {
   font-family: 'Typewriter';
@@ -16,6 +16,12 @@
 }
 
 :root {
+  --h1-font-size: 23vmin;
+  --tiger-image: url(https://s6.gifyu.com/images/S6Xef.gif);
+  --primary-color: white;
+  --secondary-color: white;
+
+
   --cor1: #05F26C;
   --cor2: #03A64A;
   --cor3: #60BF89;
@@ -268,34 +274,14 @@ nav > a {
 #spanlink{
   display: flex;
   justify-content: center;
-  margin-top: 25%;
+  margin-top: 10%;
 }
 #scrollLink{
-  position: fixed;
   text-decoration: none;
   color: var(--cor1);
   font-size: 30px;
   font-family: 'JetBrains Mono';  
   transform: rotate(90deg); 
-}
-
-.title {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  text-align: center;
-  padding: 20px;
-}
-
-
-#movie-title {
-  font-size: 36px;
-  color: var(--cor1);
-  font-family: 'Typewriter';
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 1px solid white;
-  animation: typing 4s steps(30, end), blink-caret 0.5s step-end infinite;
 }
 
 @keyframes typing {
@@ -392,4 +378,25 @@ h1 {
 .bn632-hover.bn22 {
   background-image: linear-gradient(to right, #05F26C, #3cba92, #30dd8a, #2bb673);
   box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+}
+
+
+.text-wrapper {
+  padding-top: 50px;
+  position: relative;
+}
+
+#filmsgif{
+  display: flex;
+  flex-direction: column;
+  font-family: "Titan One", sans-serif;
+  font-size: var(--h1-font-size);
+  text-transform: uppercase;
+  background: center/cover var(--secondary-color) var(--tiger-image);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+#spantitle{
+  font-size: calc(var(--h1-font-size) / 1.825);
 }
