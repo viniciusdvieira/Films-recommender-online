@@ -176,7 +176,7 @@ def recomendacao_filmes(request):
 
 
 
-#TODO Fazer o dos jogos e livros, mudar as questões, continuar a estilização, mudar o prompt da api gpt
+#TODO Fazer o dos jogos e livros, continuar a estilização
 #api de jogos https://rawg.io/apidocs
 #api de livros https://developers.google.com/books?hl=pt-br
 
