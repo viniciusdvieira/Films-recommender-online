@@ -16,12 +16,7 @@
 }
 
 :root {
-  --h1-font-size: 23vmin;
-  --tiger-image: url(https://s6.gifyu.com/images/S6Xef.gif);
-  --primary-color: white;
-  --secondary-color: white;
-
-
+  --cor0: #171717;
   --cor1: #05F26C;
   --cor2: #03A64A;
   --cor3: #60BF89;
@@ -39,7 +34,7 @@ html, .bodyprin {
   display: table;
   width: 100%;  
   height: 100%;
-  background-color: #171717;
+  background-color: var(--cor0);
   color: #000;
   line-height: 1.6;
   position: relative;
@@ -274,7 +269,7 @@ nav > a {
 #spanlink{
   display: flex;
   justify-content: center;
-  margin-top: 10%;
+  margin-top: 13%;
 }
 #scrollLink{
   text-decoration: none;
@@ -380,23 +375,29 @@ h1 {
   box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
 }
 
-
-.text-wrapper {
-  padding-top: 50px;
+#title {
+  top: 10%;
+  font-weight: 700;
+  text-align: center;
+  font-size: 85px;
+  font-family: Hack, sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #171717, #05F26C, #171717);
+  letter-spacing: 5px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shine 5s linear infinite;
   position: relative;
 }
 
-#filmsgif{
-  display: flex;
-  flex-direction: column;
-  font-family: "Titan One", sans-serif;
-  font-size: var(--h1-font-size);
-  text-transform: uppercase;
-  background: center/cover var(--secondary-color) var(--tiger-image);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-}
-
-#spantitle{
-  font-size: calc(var(--h1-font-size) / 1.825);
+@keyframes shine {
+  0% {
+    background-position-x: -500%;
+  }
+  100% {
+    background-position-x: 500%;
+  }
 }
