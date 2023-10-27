@@ -11,7 +11,9 @@
     <div id="filme-details" class="container">
         {% if filme %}
         <h1>{{ filme.title }}</h1>
-        <img src="https://image.tmdb.org/t/p/w500/{{ filme.poster_path }}" alt="{{ filme.title }} Capa">
+        <div class="imgWrap">
+            <img class="center" src="https://image.tmdb.org/t/p/w500/{{ filme.poster_path }}" alt="{{ filme.title }} Capa" data-adaptive-background="1">
+        </div>
         <p>Duração: {{ filme.runtime }} minutos</p>
         <p>
             Gêneros:
@@ -69,5 +71,9 @@
         
         <a id="voltar" href="{% url 'home' %}">Voltar para a Página Inicial</a>
     </div>
+    <script src="{% static 'js\adaptive-backgrounds.js' %}"></script>
+    <script>
+        AdaptiveBackgrounds();
+    </script>
 </body>
 </html>

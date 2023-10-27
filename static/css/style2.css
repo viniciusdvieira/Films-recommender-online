@@ -1,0 +1,14 @@
+.center {
+    display: block;
+    margin: auto;
+}
+
+.imgWrap {
+    margin-bottom: 24px;
+}
+body {
+    min-height: 530px;
+    position: relative;
+    z-index: 0;
+    padding-bottom: 80px;
+}
