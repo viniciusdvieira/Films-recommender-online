@@ -48,6 +48,7 @@ html, .bodyprin {
   right: 0;
   margin: auto;
   width: 50vw;
+  z-index: 1;
 }
 
 .line {
@@ -58,6 +59,7 @@ html, .bodyprin {
   top: 0;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  z-index: 1;
 }
 
 .line::before,
@@ -169,7 +171,6 @@ header{
   text-align: center;
   padding-top: 15px;
   padding-bottom: 20px;
-  z-index: 1;
 }
 
 
@@ -269,7 +270,8 @@ nav > a {
 #spanlink{
   display: flex;
   justify-content: center;
-  margin-top: 13%;
+  margin-top: auto;
+  padding-top: 30px;
 }
 #scrollLink{
   text-decoration: none;
@@ -306,6 +308,8 @@ nav > a {
   padding: 20px;
   background-color: #f5f5f5;
   border-radius: 5px;
+  z-index: 2;
+  position: relative;
 }
 
 h1 {
@@ -376,7 +380,7 @@ h1 {
 }
 
 #title {
-  top: 10%;
+  top: 5%;
   font-weight: 700;
   text-align: center;
   font-size: 85px;
@@ -400,4 +404,35 @@ h1 {
   100% {
     background-position-x: 500%;
   }
+}
+
+@media screen and (max-width: 867px) {
+  #title{
+    font-size: 55px;
+  }
+}
+
+@media screen and (max-width: 577px) {
+  .line, .lines{
+    visibility: hidden;
+  }
+
+}
+@media screen and (max-width: 1565px) {
+
+  .line:nth-child(3),
+  .line:nth-child(4),
+  .line:nth-child(5),
+  .line:nth-child(6){
+    visibility: hidden;
+  }
+  
+}
+@media screen and (max-width: 1820px) {
+
+  .line:nth-child(4),
+  .line:nth-child(5) {
+    visibility: hidden;
+  }
+  
 }
