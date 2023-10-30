@@ -12,7 +12,7 @@
         {% if filme %}
         <h1>{{ filme.title }}</h1>
         <div class="imgWrap">
-            <img class="center" src="https://image.tmdb.org/t/p/w500/{{ filme.poster_path }}" alt="{{ filme.title }} Capa" data-adaptive-background="1">
+            <img class="center" src="{% url 'proxy_image' filme.poster_path %}" alt="{{ filme.title }} Capa" data-adaptive-background="1">
         </div>
         <p>Duração: {{ filme.runtime }} minutos</p>
         <p>

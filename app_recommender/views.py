@@ -8,6 +8,9 @@ from cachetools import LRUCache
 import hashlib
 import os
 
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 from dotenv import load_dotenv
 load_dotenv(override=True)
 keygpt = os.getenv("API_KEY")
@@ -22,7 +25,19 @@ recommendation_cache = LRUCache(maxsize=100)  # Cache com um tempo de vida de 1 
 def home(request):
     return render(request,'src/index.html')
 
-
+@csrf_exempt  # Você pode precisar desabilitar a proteção CSRF para essa view
+def proxy_image(request, image_url):
+    try:
+        response = requests.get("https://image.tmdb.org/t/p/w500/" + image_url)
+        
+        # Certifique-se de que o status da resposta seja bem-sucedido antes de servir a imagem
+        if response.status_code == 200:
+            content_type = response.headers['Content-Type']
+            return HttpResponse(response.content, content_type=content_type)
+        else:
+            return HttpResponse(status=500)  # Ou outro código de status apropriado
+    except requests.exceptions.RequestException:
+        return HttpResponse(status=500)  # Trate erros de solicitação
 
 def obter_recomendacao_filme(respostas):
      # Crie uma chave única com base nas respostas do usuário para usar como chave de cache
