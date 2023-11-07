@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .utils import obter_informacoes_filme_por_nome
+from .utils import obter_informacoes_midia_por_nome
 from .forms import PerguntasForm
 import requests
 from .models import RespostasUsuario
@@ -144,7 +144,7 @@ def recomendacao_filmes(request):
                     nome_filme = recomendacao_filme
 
                 # Obter informações detalhadas do filme usando a API TMDb
-                filme = obter_informacoes_filme_por_nome(nome_filme)
+                filme = obter_informacoes_midia_por_nome(nome_filme)
 
                 if filme:
                     # Salvar as respostas do usuário e a recomendação no banco de dados
@@ -176,7 +176,7 @@ def recomendacao_filmes(request):
             pesquisa.save()
 
             # Obter informações do filme com base no nome
-            filme = obter_informacoes_filme_por_nome(nome_filme)
+            filme = obter_informacoes_midia_por_nome(nome_filme)
             
             if filme:
                 # Renderizar a página 'index2.html' com informações do filme

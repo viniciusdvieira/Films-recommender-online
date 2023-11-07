@@ -195,7 +195,10 @@ nav > a {
   color: var(--cor1);
   transition: color 0.5s;
   padding-right: 8px;
+  
 }
+
+
 
 .navopcoes:hover #iconnav {
   color: var(--cor4);
