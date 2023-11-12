@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 @import url("https://fonts.googleapis.com/css?family=Titan+One");
 
@@ -23,6 +24,7 @@
   --cor6: #004e22;
   --cor4: #01260E;
   --cor5: #0D0D0D;
+  --cor6: #F9BE00;
   --font-padrao: "Montserrat", sans-serif;
 }
 
@@ -34,135 +36,86 @@ html, .bodyprin {
   display: table;
   width: 100%;  
   height: 100%;
-  background-color: var(--cor0);
+  background-color: white;
   color: #000;
   line-height: 1.6;
   position: relative;
   font-family: sans-serif;
 }
 
-.lines {
-  position: fixed;
-  top: auto;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 50vw;
-  z-index: 1;
+
+
+
+.title {
+  background-color: var(--cor3);
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centraliza no eixo transversal (vertical) */
 }
 
-.line {
-  position: fixed;
-  width: 1px;
-  opacity: 10px;
-  height: 100%;
-  top: 0;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  z-index: 1;
+.title2 {
+  display: flex;
+  justify-content: center; /* centraliza no eixo principal (horizontal) */
+  text-align: center;
 }
 
-.line::before,
-.line::after {
- content: "";
- display: block;
- position: absolute;
- height: 15vh;
- width: 100%;
- top: -50%;
- left: 0;
- background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #05F26C 75%, #03A64A 100%);
- animation: drop 2s linear infinite;
- animation-fill-mode: forwards;
- animation-timing-function: linear;
+.containertitle {
+  max-width: 500px; /* ou o valor desejado para o texto */
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.line::before {
- animation-delay: 3s; 
+img {
+  max-width: 600px; /* ou o valor desejado para a imagem */
+  aspect-ratio: 1300 / 868;
+  margin: 0px auto;
 }
 
 
-@keyframes drop {
-  0% {
-    top: -50%;
-  }
-  100% {
-    top: 110%;
-  }
+.h1title{
+  font-family: 'Roboto', sans-serif;
+  font-size: 48px;
+  line-height: 54px;
+  letter-spacing: normal;
+  text-align: left;
+  color: #01260E;
+  
+  padding-bottom: 5px;
 }
 
-/*linhas esquerda*/
-.line:nth-child(1) {
-  margin-left: -22%;
-}
-.line:nth-child(2) {
-  margin-left: -17%;
-}
-.line:nth-child(3) {
-  margin-left: -12%;
-}
-.line:nth-child(4) {
-  margin-left: -7%;
-}
-
-/*linhas direita*/
-.line:nth-child(5) {
-  margin-left: 57%;
-}
-.line:nth-child(6) {
-  margin-left: 62%;
-}
-.line:nth-child(7) {
-  margin-left: 67%;
-}
-.line:nth-child(8) {
-  margin-left: 72%;
-}
-
-/*linhas esquerda*/
-.line:nth-child(1)::before,
-.line:nth-child(1)::after {
-  animation-delay: 1s;
-}
-
-.line:nth-child(2)::before,
-.line:nth-child(2)::after {
-  animation-delay: 1.5s;
-}
-
-.line:nth-child(3)::before,
-.line:nth-child(3)::after {
-  animation-delay: 2s;
-}
-
-.line:nth-child(4)::before,
-.line:nth-child(4)::after {
-  animation-delay: 2.5s;
-}
-
-/*linhas direita*/
-.line:nth-child(5)::before,
-.line:nth-child(5)::after {
-  animation-delay: 2.5s;
-}
-.line:nth-child(6)::before,
-.line:nth-child(6)::after {
-  animation-delay: 2s;
-}
-.line:nth-child(7)::before,
-.line:nth-child(7)::after {
-  animation-delay: 1.5s;
-}
-.line:nth-child(8)::before,
-.line:nth-child(8)::after {
-  animation-delay: 1s;
+.ptitle{
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  font-size: 16px;
+  padding-bottom: 5px;
 }
 
 
-header{
-  height: 100vh;
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+.linka{
+  text-align: left; 
 }
 
+.linkform{
+  text-decoration: none;
+  background-color: var(--cor6);
+  color: black;
+  padding: 10px;
+   
+}
 
 
 .navprin {
@@ -175,7 +128,7 @@ header{
 
 
 nav > a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-weight: bold;
   font-size: 20px;
@@ -270,44 +223,13 @@ nav > a {
   }
 }
 
-#spanlink{
-  display: flex;
-  justify-content: center;
-  margin-top: auto;
-  padding-top: 30px;
-}
-#scrollLink{
-  text-decoration: none;
-  color: var(--cor1);
-  font-size: 30px;
-  font-family: 'JetBrains Mono';  
-  transform: rotate(90deg); 
-}
-
-@keyframes typing {
-  from {
-      width: 0;
-  }
-  to {
-      width: 100%;
-  }
-}
-
-@keyframes blink-caret {
-  from,
-  to {
-      border-color: transparent;
-  }
-  50% {
-      border-color: white;
-  }
-}
 
 
 
 .container {
+  padding-top: 20px;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 30px auto;
   padding: 20px;
   background-color: #f5f5f5;
   border-radius: 5px;
@@ -315,9 +237,7 @@ nav > a {
   position: relative;
 }
 
-h1 {
-  text-align: center;
-}
+
 
 .question {
   margin-bottom: 20px;
@@ -382,60 +302,3 @@ h1 {
   box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
 }
 
-#title {
-  top: 5%;
-  font-weight: 700;
-  text-align: center;
-  font-size: 85px;
-  font-family: Hack, sans-serif;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, #171717, #05F26C, #171717);
-  letter-spacing: 5px;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-repeat: no-repeat;
-  background-size: 80%;
-  animation: shine 5s linear infinite;
-  position: relative;
-}
-
-@keyframes shine {
-  0% {
-    background-position-x: -500%;
-  }
-  100% {
-    background-position-x: 500%;
-  }
-}
-
-@media screen and (max-width: 867px) {
-  #title{
-    font-size: 55px;
-  }
-}
-
-@media screen and (max-width: 577px) {
-  .line, .lines{
-    visibility: hidden;
-  }
-
-}
-@media screen and (max-width: 1565px) {
-
-  .line:nth-child(3),
-  .line:nth-child(4),
-  .line:nth-child(5),
-  .line:nth-child(6){
-    visibility: hidden;
-  }
-  
-}
-@media screen and (max-width: 1820px) {
-
-  .line:nth-child(4),
-  .line:nth-child(5) {
-    visibility: hidden;
-  }
-  
-}

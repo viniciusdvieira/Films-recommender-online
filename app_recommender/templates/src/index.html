@@ -17,8 +17,6 @@
     <nav class="navprin">
     
         <a href="#" class="navopcoes"><i class="fa-solid fa-film fa-lg" id= "iconnav"></i> Filmes</a>
-        <a href="#" class="navopcoes"><i class="fa-solid fa-gamepad fa-lg" id="iconnav"></i>Jogos</a>
-        <a href="#" class="navopcoes"><i class="fa-solid fa-book fa-lg" id="iconnav"></i>Livros</a>
         <form class="searchBox" id="searchBox" method="get" action="{% url 'recomendation' %}">
             <input class="searchInput" type="text" name="q" placeholder="Search" onfocus="expandSearchBox()" onblur="collapseSearchBox()" autocomplete="off">
             <button class="searchButton" href="#">
@@ -28,23 +26,21 @@
             </button>
         </form>
     </nav>
-    
-    <p id="title">Recomendador<br>de<br>filmes</p>
-
-    <span id="spanlink"><a href="#formprin" id="scrollLink">~></a></span>
-    
 </header>
-
-<div class="lines"> 
-    <div class="line left"></div>
-    <div class="line left"></div>
-    <div class="line left"></div>
-    <div class="line left"></div>
-    <div class="line right"></div>
-    <div class="line right"></div>
-    <div class="line right"></div>
-    <div class="line right"></div>
+<div class="title">
+    <div class="title2">
+        <div class="containertitle">
+          <div  class="h1title"><h1>Descubra o filme que se encaixa nos seus gostos</h1></div>
+          <p class="ptitle">Responda o questionario e descubra e tenha uma recomenção com base nas respostas</p>
+          <div class="linka"><a href="#" class="linkform">comece aqui</a></div>
+        </div>
+        <div class="img">
+            <img src="{% static 'img/testeimg.png' %}" alt="teste">
+        </div>
+    </div>
 </div>
+
+
 <div class="container" id="formprin">
     <form id="quiz-form" method="post" action="{% url 'recomendation' %}">
         {% csrf_token %}
