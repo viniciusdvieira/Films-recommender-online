@@ -6,3 +6,9 @@ document.getElementById('scrollLink').addEventListener('click', function (e) {
         behavior: 'smooth'
     });
 });
+document.querySelector('.linkform').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('#formprin').scrollIntoView({
+      behavior: 'smooth'
+    });
+  });

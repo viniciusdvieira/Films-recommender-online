@@ -18,11 +18,11 @@
 
 :root {
   --cor0: #171717;
-  --cor1: #05F26C;
-  --cor2: #1DB954;
-  --cor3: #1ED760;
-  --cor6: #004e22;
-  --cor4: #01260E;
+  --cor1: #0cbccc;
+  --cor2: #2868ee;
+  --cor3: #107acc;
+  --cor6: #15297c;
+  --cor4: #142157;
   --cor5: #0D0D0D;
   --cor6: #F9BE00;
   --font-padrao: "Montserrat", sans-serif;
@@ -36,11 +36,16 @@ html, .bodyprin {
   display: table;
   width: 100%;  
   height: 100%;
-  background-color: white;
+  
   color: #000;
   line-height: 1.6;
   position: relative;
   font-family: sans-serif;
+  scroll-behavior: smooth;
+  background: #fff;
+  background-image: radial-gradient(#99999967 5%, transparent 0);
+  background-size: 35px 35px;
+
 }
 
 
@@ -59,23 +64,24 @@ html, .bodyprin {
 .title-overlay {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+
+  width: 80%;   
   height: 100%;
-  background-color: var(--cor3); /* Substitua pela cor e opacidade desejadas */
+  background-color: var(--cor3); 
   opacity: 0.5;
   z-index: 0; /* Definindo um z-index menor para a sobreposição */
+  padding-bottom: 20px;
 }
 
 .background-image {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+
+  width: 80%;
   height: 100%;
   background-image: url('https://s2.glbimg.com/2C0hMRuCY_7NfDPjby4_Bjmq8Nc=/e.glbimg.com/og/ed/f/original/2018/03/22/avengers-infinity-war-official-poster-2018-4o.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
   z-index: -1; /* Definindo um z-index menor para a imagem de fundo */
 }
@@ -85,34 +91,53 @@ html, .bodyprin {
   justify-content: center;
   text-align: center;
   z-index: 1;
+  position: relative;
+  top: -15vw; 
+  left: -5vw; 
 }
 
 .containertitle {
-  max-width: 500px;
-  padding-top: 20px;
+  max-width: 80%;
+  padding-top: 5vw; /* Use uma unidade relativa, como vw (viewport width) */
+  margin-bottom: 5vw; /* Use uma unidade relativa, como vw */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
   z-index: 1;
+  text-align: left;
 }
-
-
 
 .h1title {
   font-family: 'Roboto', sans-serif;
-  font-size: 48px;
-  line-height: 54px;
+  font-size: 4vw; /* Use uma unidade relativa, como vw */
+  line-height: 1.2;
   letter-spacing: normal;
   text-align: left;
-  color: #01260E;
-  padding-bottom: 5px;
+  color: white;
+  padding-bottom: 1vw; /* Use uma unidade relativa, como vw */
 }
 
 .ptitle {
   font-family: 'Roboto', sans-serif;
   text-align: left;
-  font-size: 16px;
-  padding-bottom: 5px;
+  font-size: 1.6vw; /* Use uma unidade relativa, como vw */
+  padding-bottom: 1vw; /* Use uma unidade relativa, como vw */
+  color: white;
+}
+
+/* Adicione uma media query para ajustar o estilo em telas menores */
+@media (max-width: 1264px) {
+  .title-overlay{
+    width: 100%;
+  }
+  .background-image{
+    width: 100%;
+  }
+
+  .ptitle{
+    font-size: 3vh;
+  }
 }
 
 
@@ -130,6 +155,7 @@ h1 {
 }
 
 .linkform{
+  font-family: 'Roboto', sans-serif;
   text-decoration: none;
   background-color: var(--cor6);
   color: black;
@@ -155,92 +181,6 @@ nav > a {
   margin: 5px;
 }
 
-.navopcoes:hover {
-  color: var(--cor4);
-  text-decoration: none;
-  background-color: var(--cor1);
-  border-radius: 5px;
-  transition: 0.5s;
-}
-
-#iconnav {
-  color: var(--cor1);
-  transition: color 0.5s;
-  padding-right: 8px;
-  
-}
-
-
-
-.navopcoes:hover #iconnav {
-  color: var(--cor4);
-}
-
-
-.searchBox {
-  position: static;
-  padding-top: 10px;
-}
-
-.searchBox.open .searchInput,
-.searchInput:focus {
-  color: black;
-
-}
-
-.searchButton {
-  color: var(--cor4);
-  border: none;
-  float: right;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--cor1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-}
-
-.searchInput {
-  border: none;
-  outline: none;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
-  padding-right: 2px;
-  float: left;
-  padding: 0;
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 40px;
-  width: 0px;
-}
-
-.searchInput::placeholder {
-  color: black;
-}
-
-.searchBox:hover > .searchButton {
-  background: var(--cor4);
-  color: var(--cor1);
-  border-radius: 0%;
-  transition: 0.1s;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-}
-
-.searchBox:hover .searchInput {
-  width: 190px;
-  padding: 0 6px;
-}
-
-@media screen and (max-width: 620px) {
-  .searchBox.open .searchInput,
-  .searchInput:focus {
-      width: 150px;
-      padding: 0 6px;
-  }
-}
 
 
 
@@ -318,7 +258,6 @@ nav > a {
 }
 
 .bn632-hover.bn22 {
-  background-image: linear-gradient(to right, #05F26C, #3cba92, #30dd8a, #2bb673);
-  box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+  background-image: linear-gradient(to right, #2868ee, #0cbccc, #107acc, #15297c);
+  box-shadow: 0 4px 15px 0 rgba(23, 45, 168, 0.75);
 }
-
