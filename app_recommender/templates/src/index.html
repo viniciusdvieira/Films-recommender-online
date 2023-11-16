@@ -17,7 +17,14 @@
     <nav class="navprin">
         <a href="#">LOGO</a>
         <h1>NOME DO SITE</h1>
-        
+        <form class="searchBox" id="searchBox" method="get" action="{% url 'recomendation' %}">
+            <input class="searchInput" type="text" name="q" placeholder="Search" onfocus="expandSearchBox()" onblur="collapseSearchBox()" autocomplete="off">
+            <button class="searchButton" href="#">
+                <span class="material-symbols-outlined">
+                    search
+                </span>
+            </button>
+        </form>
         
     </nav>
 </header>

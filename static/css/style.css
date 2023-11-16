@@ -66,7 +66,7 @@ html, .bodyprin {
   top: 0;
 
   width: 80%;   
-  height: 100%;
+  height: 80%;
   background-color: var(--cor3); 
   opacity: 0.5;
   z-index: 0; /* Definindo um z-index menor para a sobreposição */
@@ -78,7 +78,7 @@ html, .bodyprin {
   top: 0;
 
   width: 80%;
-  height: 100%;
+  height: 80%;
   background-image: url('https://s2.glbimg.com/2C0hMRuCY_7NfDPjby4_Bjmq8Nc=/e.glbimg.com/og/ed/f/original/2018/03/22/avengers-infinity-war-official-poster-2018-4o.jpg');
   background-size: cover;
   background-position: center bottom;
@@ -260,4 +260,68 @@ nav > a {
 .bn632-hover.bn22 {
   background-image: linear-gradient(to right, #2868ee, #0cbccc, #107acc, #15297c);
   box-shadow: 0 4px 15px 0 rgba(23, 45, 168, 0.75);
+}
+.searchBox {
+  position: static;
+  padding-top: 10px;
+}
+
+.searchBox.open .searchInput,
+.searchInput:focus {
+  color: black;
+
+}
+
+.searchButton {
+  color: var(--cor4);
+  border: none;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--cor1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding-right: 2px;
+  float: left;
+  padding: 0;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+
+.searchInput::placeholder {
+  color: black;
+}
+
+.searchBox:hover > .searchButton {
+  background: var(--cor4);
+  color: var(--cor1);
+  border-radius: 0%;
+  transition: 0.1s;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.searchBox:hover .searchInput {
+  width: 190px;
+  padding: 0 6px;
+}
+
+@media screen and (max-width: 620px) {
+  .searchBox.open .searchInput,
+  .searchInput:focus {
+      width: 150px;
+      padding: 0 6px;
+  }
 }
