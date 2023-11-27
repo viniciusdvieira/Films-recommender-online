@@ -8,6 +8,10 @@
   src: url('/static/fonts/JMH_Typewriter.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Titlename';
+  src: url('/static/fonts/fonttitle.ttf') format('truetype');
+}
 
 
 * {
@@ -19,7 +23,7 @@
 :root {
   --cor0: #171717;
   --cor1: #0cbccc;
-  --cor2: #2868ee;
+  --cor2: #032541;
   --cor3: #107acc;
   --cor6: #15297c;
   --cor4: #142157;
@@ -49,7 +53,13 @@ html, .bodyprin {
 }
 
 
-
+#titlename{
+  font-family: 'Titlename';
+  font-size: 50px;
+  letter-spacing: 12px;
+  color: black;
+  padding-top: 22px;
+}
 
 .title {
   position: relative;
@@ -65,9 +75,9 @@ html, .bodyprin {
   position: absolute;
   top: 0;
 
-  width: 80%;   
+  width: 100%;   
   height: 80%;
-  background-color: var(--cor3); 
+  background-color: rgba(16, 122, 204, 0.808); 
   opacity: 0.5;
   z-index: 0; /* Definindo um z-index menor para a sobreposição */
   padding-bottom: 20px;
@@ -77,9 +87,9 @@ html, .bodyprin {
   position: absolute;
   top: 0;
 
-  width: 80%;
+  width: 100%;
   height: 80%;
-  background-image: url('https://s2.glbimg.com/2C0hMRuCY_7NfDPjby4_Bjmq8Nc=/e.glbimg.com/og/ed/f/original/2018/03/22/avengers-infinity-war-official-poster-2018-4o.jpg');
+  background-image: url('https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/rLb2cwF3Pazuxaj0sRXQ037tGI1.jpg');
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -261,67 +271,45 @@ nav > a {
   background-image: linear-gradient(to right, #2868ee, #0cbccc, #107acc, #15297c);
   box-shadow: 0 4px 15px 0 rgba(23, 45, 168, 0.75);
 }
-.searchBox {
-  position: static;
-  padding-top: 10px;
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
 }
 
-.searchBox.open .searchInput,
-.searchInput:focus {
-  color: black;
+.searchTerm {
+  width: 100%;
+  border: 3px solid #032541;
+  border-right: none;
+  padding: 15px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
 
+.searchTerm:focus{
+  color: black;
 }
 
 .searchButton {
-  color: var(--cor4);
-  border: none;
-  float: right;
   width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--cor1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
+  height: 36px;
+  border: 1px solid #032541;
+  background: #032541;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-.searchInput {
-  border: none;
-  outline: none;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
-  padding-right: 2px;
-  float: left;
-  padding: 0;
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 40px;
-  width: 0px;
-}
-
-.searchInput::placeholder {
-  color: black;
-}
-
-.searchBox:hover > .searchButton {
-  background: var(--cor4);
-  color: var(--cor1);
-  border-radius: 0%;
-  transition: 0.1s;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-}
-
-.searchBox:hover .searchInput {
-  width: 190px;
-  padding: 0 6px;
-}
-
-@media screen and (max-width: 620px) {
-  .searchBox.open .searchInput,
-  .searchInput:focus {
-      width: 150px;
-      padding: 0 6px;
-  }
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 80%;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
