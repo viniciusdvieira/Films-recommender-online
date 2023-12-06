@@ -8,23 +8,33 @@
     <title>Recomendação</title>
 </head>
 <body>
+    <header >
+    <nav class="navprin">
+        <a href="#"><img src="{% static 'img/image.png' %}" alt="logo" style="height: 70px;"></a>
+        <h1 id="titlename">CINEMAP</h1>
+    </nav>
+    </header>
     <div id="filme-details" class="container">
         {% if filme %}
-        <h1>{{ filme.title }}</h1>
+        
         <div class="imgWrap">
             <img class="center" src="{% url 'proxy_image' filme.poster_path %}" alt="{{ filme.title }} Capa" data-adaptive-background="1">
+            <div class="descriprin">
+                <h1>{{ filme.title }}</h1>
+                <p>Duração: {{ filme.runtime }} minutos</p>
+                <p>
+                    Gêneros:
+                    {% for genero in filme.genres %}
+                        {{ genero.name }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <p>{{ filme.overview }}</p>
+                <p>Data de Lançamento: {{ filme.release_date|slice:":4" }}</p>
+                <p>Nota Média: {{ filme.vote_average|floatformat:1 }}</p>
+            </div>
         </div>
-        <p>Duração: {{ filme.runtime }} minutos</p>
-        <p>
-            Gêneros:
-            {% for genero in filme.genres %}
-                {{ genero.name }}
-                {% if not forloop.last %}, {% endif %}
-            {% endfor %}
-        </p>
-        <p>{{ filme.overview }}</p>
-        <p>Data de Lançamento: {{ filme.release_date }}</p>
-        <p>Nota Média: {{ filme.vote_average|floatformat:1 }}</p>
+        
         
         <h2>Diretor</h2>
         <p>{{ filme.diretor }}</p>

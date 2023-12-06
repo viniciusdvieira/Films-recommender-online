@@ -17,8 +17,6 @@
     <nav class="navprin">
         <a href="#"><img src="{% static 'img/image.png' %}" alt="logo" style="height: 70px;"></a>
         <h1 id="titlename">CINEMAP</h1>
-        
-        
     </nav>
 </header>
 <div class="title">
@@ -33,7 +31,7 @@
         <form class="searchBox" id="searchBox" method="get" action="{% url 'recomendation' %}">
             <div class="wrap">
                 <div class="search">
-                   <input type="text" class="searchTerm" placeholder="Digite o filme que desejas pesquisar">
+                   <input name="q" type="text" class="searchTerm" placeholder="Digite o filme que desejas pesquisar" onfocus="expandSearchBox()" onblur="collapseSearchBox()" autocomplete="off">
                    <button type="submit" class="searchButton">
                      <i class="fa fa-search"></i>
                   </button>
@@ -56,7 +54,7 @@
             </div>
             <div class="options">
                 <input id="q1-alternativa-b" name="q1" value="b" type="radio">
-                <label for="q1-alternativa-b">Séries</label>
+                <label for="q1-alternativa-b">Curtametragem</label>
             </div>
             <div class="options">
                 <input id="q1-alternativa-c" name="q1" value="c" type="radio">

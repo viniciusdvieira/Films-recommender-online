@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .utils import obter_informacoes_midia_por_nome
+from .utils import obter_informacoes_filme_por_nome
 from .forms import PerguntasForm
 import requests
 from .models import RespostasUsuario
@@ -54,7 +54,7 @@ def obter_recomendacao_filme(respostas):
 
     
     mapeamento_respostas = {
-        'q1': {'a': 'Filme', 'b': 'Série', 'c': 'Documentário', 'd': 'Animação(desenho animado)', 'e': 'Outros'},
+        'q1': {'a': 'Filme', 'b': 'curtametragem', 'c': 'Documentário', 'd': 'Animação(desenho animado)', 'e': 'Outros'},
         'q2': {'a': 'Diretores renomados e premiados', 'b': 'Diretores clássicos e atemporais', 'c': 'Diretores contemporâneos em ascensão', 'd': 'Diretores de mídia independente', 'e': 'Não tenho preferência por tipo de diretor'},
         'q3': {'a': 'Curtametragem', 'b': 'Midias longos ', 'c': 'Duração padrão ', 'd': 'Depende do filme', 'e': 'Não tenho preferência quanto à duração'},
         'q4': {'a': 'Enredo cativante', 'b': 'Desenvolvimento de personagens', 'c': 'Atuação excepcional', 'd': 'Produção visual impressionante', 'e': 'Mensagem ou tema poderoso'},
@@ -144,7 +144,7 @@ def recomendacao_filmes(request):
                     nome_filme = recomendacao_filme
 
                 # Obter informações detalhadas do filme usando a API TMDb
-                filme = obter_informacoes_midia_por_nome(nome_filme)
+                filme = obter_informacoes_filme_por_nome(nome_filme)
 
                 if filme:
                     # Salvar as respostas do usuário e a recomendação no banco de dados
@@ -176,7 +176,7 @@ def recomendacao_filmes(request):
             pesquisa.save()
 
             # Obter informações do filme com base no nome
-            filme = obter_informacoes_midia_por_nome(nome_filme)
+            filme = obter_informacoes_filme_por_nome(nome_filme)
             
             if filme:
                 # Renderizar a página 'index2.html' com informações do filme
