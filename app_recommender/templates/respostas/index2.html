@@ -19,19 +19,31 @@
         
         <div class="imgWrap">
             <img class="center" src="{% url 'proxy_image' filme.poster_path %}" alt="{{ filme.title }} Capa" data-adaptive-background="1">
+            
             <div class="descriprin">
+
                 <h1>{{ filme.title }}</h1>
-                <p>Duração: {{ filme.runtime }} minutos</p>
-                <p>
-                    Gêneros:
-                    {% for genero in filme.genres %}
-                        {{ genero.name }}
-                        {% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                </p>
+   
+                <div class="descri2">
+                    <p id="nota">{{ filme.vote_average|floatformat:1 }}</p>
+                    <p id="data">◦      {{ filme.release_date }}</p>
+                    <p id="genero">
+                        ◦
+                        {% for genero in filme.genres %}
+                            {{ genero.name }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    
+                    <p> ◦{{ filme.runtime }} minutos</p>
+                </div>
+                
+                
+                
+                <h2>Sinopse</h2>
                 <p>{{ filme.overview }}</p>
-                <p>Data de Lançamento: {{ filme.release_date|slice:":4" }}</p>
-                <p>Nota Média: {{ filme.vote_average|floatformat:1 }}</p>
+                
+                
             </div>
         </div>
         
@@ -45,9 +57,14 @@
         <h2>Elenco Principal</h2>
         <ul>
             {% for ator in filme.cast %}
-                <li>
-                    <img src="https://image.tmdb.org/t/p/w185/{{ ator.profile_path }}" alt="{{ ator.name }} Foto">
-                    <p>{{ ator.name }}</p>
+                <li class="liatores">
+                    <div class="listatores">
+                    <img id="atores" src="https://image.tmdb.org/t/p/w185/{{ ator.profile_path }}" alt="{{ ator.name }} Foto">
+                    <p class="nomeator">{{ ator.name }}</p>
+                    {% if ator.character %}
+                        <p class="personagen">{{ ator.character }}</p>
+                    {% endif %}
+                    </div>
                 </li>
             {% endfor %}
         </ul>
@@ -55,16 +72,11 @@
         <p>Filme não encontrado.</p>
         {% endif %}
 
-        <h2>Classificação por Idade</h2>
-        <p>{{ filme.classificacao }}</p>
+        
 
         <h2>Idioma Original</h2>
         <p>{{ filme.idioma_original }}</p>
-
-        <h2>Links para Redes Sociais</h2>
-        <p>Twitter: {{ filme.twitter }}</p>
-        <p>Facebook: {{ filme.facebook }}</p>
-        <p>Instagram: {{ filme.instagram }}</p>
+        
 
         <h2>Filmes Relacionados</h2>
         <ul>

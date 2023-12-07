@@ -53,13 +53,6 @@ html, .bodyprin {
 }
 
 
-#titlename{
-  font-family: 'Titlename';
-  font-size: 50px;
-  letter-spacing: 12px;
-  color: black;
-  padding-top: 22px;
-}
 
 .title {
   position: relative;

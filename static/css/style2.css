@@ -21,58 +21,116 @@
   }
 
 
-.center {
-    margin: 10px;
-    width: 300px;
-    border-radius: 5px;
-    display: flex;
-}
+
 body {
     min-height: 530px;
     position: relative;
     z-index: 0;
     padding-bottom: 80px;
 }
+.center {
+  margin: 10px;
+  width: 300px;
+  border-radius: 5px;
+}
 
 .imgWrap {
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center; /* Centraliza verticalmente os itens */
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Adicionado para garantir que o backdrop não ultrapasse a imgWrap */
 }
 
 
-.descriprin{
-    color: black;
-    padding: 16px; /* Adiciona preenchimento para espaçamento */
-    flex: 1; /* Ocupa o restante do espaço disponível */
+
+.descriprin {
+  position: relative;
+  z-index: 1;
+  color: black;
+  padding: 16px;
+  flex: 1;
+  padding: 10px;
 }
 
-.imgWrap img {
-    max-width: 100%;
+.center {
+  max-width: 100%;
 }
+
+/* Adicionado um estilo para garantir que a imagem backdrop não seja selecionável */
+.backdrop img {
+  user-select: none;
+}
+
 
 .navprin {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    background-color: var(--cor2);
-  }
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--cor2);
+}
   
   
-  nav > a {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 12px;
-    margin: 5px;
-  }
+nav > a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 12px;
+  margin: 5px;
+}
 
-  #titlename{
-    font-family: 'Titlename';
-    font-size: 50px;
-    letter-spacing: 12px;
-    color: black;
-    padding-top: 22px;
-  }
-  
+#titlename{
+  font-family: 'Titlename';
+  font-size: 50px;
+  letter-spacing: 12px;
+  color: white;
+  padding-top: 22px;
+}
+ul {
+  display: flex;
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.liatores {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  padding: 10px;
+}
+
+.listatores{
+  box-shadow:0px 0px 7px 1px rgba(0, 0, 0, 0.356);
+  border-radius: 5px;
+  max-width: 80%;
+}
+
+#atores {
+    max-width: 100%;
+    height: auto;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.nomeator{
+  font-weight: bolder;
+  padding-left: 2px;
+}
+
+.personagen{
+  font-size: 14px;
+  padding-left: 2px;
+  padding-top: 2px
+}
+
+.descri2{
+  display: flex;
+  align-items: center;
+  position: relative; 
+}
+
+.descri2 p{
+  padding-left: 5px;
+  padding-right: 5px;
+}

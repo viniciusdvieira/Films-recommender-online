@@ -30,14 +30,28 @@ def obter_informacoes_filme_por_nome(nome_filme):
                     # Obtendo os gêneros do filme
                     generos = details_data.get('genres', [])
 
-                    # Obtendo o elenco principal (os 5 primeiros atores)
                     elenco_principal = []
-                    for ator in credits_data.get('cast', [])[:5]:
+
+                    # Obtendo o elenco principal (os 5 primeiros atores)
+                    for ator in credits_data.get('cast', [])[:10]:
                         ator_info = {
                             'name': ator['name'],
-                            'profile_path': ator['profile_path']
+                            'profile_path': ator['profile_path'],
+                            'character': None
                         }
+
+                        # Fazendo uma chamada adicional para obter informações do personagem
+                        personagem_response = requests.get(f'https://api.themoviedb.org/3/person/{ator["id"]}/movie_credits', params=params)
+                        personagem_data = personagem_response.json()
+
+                        # Verificando se há informações do personagem para o filme em questão
+                        for movie_credit in personagem_data.get('cast', []):
+                            if movie_credit.get('id') == filme_id:
+                                ator_info['character'] = movie_credit.get('character')
+                                break
+
                         elenco_principal.append(ator_info)
+
 
 
                     # Obtendo o nome do diretor
@@ -66,8 +80,6 @@ def obter_informacoes_filme_por_nome(nome_filme):
 
 
 
-                    # Classificação por Idade
-                    classificacao = filme.get('certification', 'Não disponível')
 
                     # Idioma Original
                     idioma_original = filme.get('original_language', 'Não disponível')
@@ -89,7 +101,6 @@ def obter_informacoes_filme_por_nome(nome_filme):
                     filme['genres'] = generos
                     filme['diretor'] = diretor
                     filme['diretor_imagem'] = diretor_imagem
-                    filme['classificacao'] = classificacao
                     filme['idioma_original'] = idioma_original
                     filme['twitter'] = twitter
                     filme['facebook'] = facebook
@@ -99,3 +110,4 @@ def obter_informacoes_filme_por_nome(nome_filme):
                     return filme
 
     return None
+
