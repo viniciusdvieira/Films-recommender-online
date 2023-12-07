@@ -38,7 +38,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden; /* Adicionado para garantir que o backdrop não ultrapasse a imgWrap */
+  
 }
 
 
