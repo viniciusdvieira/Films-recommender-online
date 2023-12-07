@@ -4,15 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f2f22e7c20.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
     <title>Recomendação</title>
 </head>
 <body>
     <header >
-    <nav class="navprin">
-        <a href="#"><img src="{% static 'img/image.png' %}" alt="logo" style="height: 70px;"></a>
-        <h1 id="titlename">CINEMAP</h1>
-    </nav>
+        <nav class="navprin">
+            <a href="#"><img src="{% static 'img/CINEMAP3.png' %}" alt="logo" style="height: 60px;"></a>
+            
+            <form class="searchBox" id="searchBox" method="get" action="{% url 'recomendation' %}">
+                <div class="wrap">
+                    <div class="search">
+                       <input name="q" type="text" class="searchTerm" placeholder="Digite o filme que deseja pesquisar" onfocus="expandSearchBox()" onblur="collapseSearchBox()" autocomplete="off">
+                       <button type="submit" class="searchButton">
+                         <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                 </div>
+            </form>
+            <i class="fa-solid fa-user fa-2xl" style="color: #ffffff;"></i>
+        </nav>
     </header>
     <div id="filme-details" class="container">
         {% if filme %}

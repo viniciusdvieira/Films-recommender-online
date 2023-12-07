@@ -169,9 +169,11 @@ h1 {
 
 .navprin {
   display: flex;
-  justify-content: center;
-  text-align: center;
-  background-color: var(--cor2);
+  justify-content: left;
+  text-align: left;
+  background-image: linear-gradient(to right, #032541, #142157, #15297c);
+  align-items: center;
+  justify-content: space-between;
 }
 
 
@@ -182,6 +184,11 @@ nav > a {
   font-size: 20px;
   padding: 12px;
   margin: 5px;
+  padding-left: 120px;
+}
+
+nav > i{
+  padding-right: 100px;
 }
 
 
