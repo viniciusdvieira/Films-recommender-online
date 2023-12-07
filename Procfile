@@ -1,1 +1,1 @@
-web: gunicorn projeto_recommender.wsgi:application -b 0.0.0.0:7351
+web: gunicorn projeto_recommender.wsgi:application
