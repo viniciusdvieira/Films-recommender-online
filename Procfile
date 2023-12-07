@@ -1,1 +1,1 @@
-web: gunicorn app_recommender.wsgi:application
+web: gunicorn projeto_recommender.wsgi:application
