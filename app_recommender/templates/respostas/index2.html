@@ -62,30 +62,31 @@
                     
                     <h2>Sinopse</h2>
                     <p id="sinopse">{{ filme.overview }}</p>
-                    
-
-                    <h2>Diretor</h2>
-                    <p>{{ filme.diretor }}</p>
-                    
-
-    
-                    {% if filme.trailer_id %}
-                        <h2>Trailer</h2>
-                        <a id="playButton" data-trailer-id="{{ filme.trailer_id }}">
-                            <span class="material-symbols-outlined">play_circle</span>
-                        </a>
-                        <div id="videoOverlay">
-                            <div id="videoContainer">
-                                <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-                                <a id="closeButton">
-                                    <span class="material-symbols-outlined">
-                                    close
-                                    </span>
-                                </a>
-                            </div>
+                    <div class="diretortrailer">
+                        <div>
+                            <h2>Diretor</h2>
+                            <p id="diretor">{{ filme.diretor }}</p>
                         </div>
-                    {% endif %}
 
+                        <div class="trailer">
+                            {% if filme.trailer_id %}
+                                <h2>Trailer</h2>
+                                <a id="playButton" data-trailer-id="{{ filme.trailer_id }}">
+                                    <span class="material-symbols-outlined">play_circle</span>
+                                </a>
+                                <div id="videoOverlay">
+                                    <div id="videoContainer">
+                                        <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                                        <a id="closeButton">
+                                            <span class="material-symbols-outlined">
+                                            close
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
             
