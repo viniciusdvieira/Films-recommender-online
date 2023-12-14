@@ -104,25 +104,21 @@ nav > i{
   padding-right: 100px;
 }
 
-#titlename{
-  font-family: 'Titlename';
-  font-size: 50px;
-  letter-spacing: 12px;
-  color: white;
-  padding-top: 22px;
-}
+
 ul {
   display: flex;
   overflow-x: auto;
   padding: 0;
   margin: 0;
   list-style-type: none;
+  max-width: 100%;
 }
 
 .liatores {
-    flex: 0 0 auto;
-    margin-right: 10px;
+  flex: 0 0 auto;
+  margin-right: 10px;
   padding: 10px;
+  width: 200px;
 }
 
 .listatores{
@@ -166,26 +162,19 @@ ul {
 }
 
 .descri2 p{
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 12px;
+  padding-right: 0px;
+  
 }
 
-.search {
-  width: 100%;
-  position: relative;
+
+.descri3{
+  padding-bottom: 25px;
   display: flex;
+  align-items: center;
+  position: relative;
 }
 
-.searchTerm {
-  width: 50%;
-  border: 3px solid #15297c;
-  border-right: none;
-  padding: 15px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
-}
 
 .searchTerm:focus{
   color: black;
@@ -203,12 +192,31 @@ ul {
   font-size: 20px;
 }
 
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 30%;
+.searchBox{
+  padding-bottom: 30px;
+}
+.searchTerm {
+  width: calc(100% + 50px);
+  margin-left: -50px;
+  border: 3px solid #15297c;
+  border-right: none;
+  padding: 15px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+.wrap {
+  width: 15%; /* Ajuste o valor conforme necessário */
   position: absolute;
-  right: -19%;
-  transform: translate(-50%, -50%);
+  left: 83%;
+  transform: translateX(-50%);
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
 }
 
 #videoOverlay {
@@ -251,4 +259,12 @@ ul {
 
 #nota{
   opacity: 0;
+}
+
+.Elenco{
+  padding-left: 10px;
+}
+
+.pdescri{
+  font-size: 20px;
 }

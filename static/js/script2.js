@@ -84,3 +84,36 @@ window.onload = function () {
 
     animate();
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Função para verificar se a cor é clara ou escura
+    function isColorLight(hexColor) {
+        // Converter cor hexadecimal para RGB
+        let r = parseInt(hexColor.slice(1, 3), 16);
+        let g = parseInt(hexColor.slice(3, 5), 16);
+        let b = parseInt(hexColor.slice(5, 7), 16);
+
+        // Calcular a luminosidade usando a fórmula de W3C
+        let luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+        // Retorna verdadeiro se a luminosidade for maior que 0.5 (cor clara), senão falso
+        return luminance > 0.5;
+    }
+
+    // Obter a cor de fundo da sua div
+    let backgroundColor = window.getComputedStyle(document.querySelector('.descriprin')).backgroundColor;
+
+    // Obter as letras da div
+    let textElements = document.querySelectorAll('.descriprin h1, .descriprin p');
+
+    // Verificar se a cor é clara ou escura e definir a cor do texto
+    if (isColorLight(backgroundColor)) {
+        textElements.forEach(function (element) {
+            element.style.color = 'black';
+        });
+    } else {
+        textElements.forEach(function (element) {
+            element.style.color = 'white';
+        });
+    }
+});

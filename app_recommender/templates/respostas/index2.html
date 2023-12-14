@@ -33,81 +33,89 @@
     <div id="filme-details" class="container">
         {% if filme %}
         
-        <div class="imgWrap">
-            <img class="center" src="{% url 'proxy_image' filme.poster_path %}" alt="{{ filme.title }} Capa" data-adaptive-background="1">
-            
-            <div class="descriprin">
-                <h1 id="title">{{ filme.title }}</h1>
-                <div class="descri2">
-                    <div>
-                        <canvas id="myCanvas" width="70" height="70"></canvas>
-                        <p id="nota">{{ filme.vote_average|floatformat:1 }}</p>
-                    </div>
-                    <p id="data">{{ filme.release_date }}</p>
+            <div class="imgWrap">
+                <img class="center" src="{% url 'proxy_image' filme.poster_path %}" alt="{{ filme.title }} Capa" data-adaptive-background="1">
+                
+                <div class="descriprin" id="filme-info">
+                    <h1 id="title">{{ filme.title }}</h1>
+                    <div class="descri2">
+                        <div>
+                            <canvas id="myCanvas" width="70" height="70"></canvas>
+                            <p id="nota">{{ filme.vote_average|floatformat:1 }}</p>
+                        </div>
+                        <div class="descri3">
+                            <p class="pdescri" id="data">{{ filme.release_date }}</p>
 
-                    <p id="genero">
-                        ◦
-                        {% for genero in filme.genres %}
-                            {{ genero.name }}
-                            {% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                    </p>
-                    
-                    <p> ◦{{ filme.runtime }} minutos</p>
-                </div>
-                
-                
-                
-                <h2>Sinopse</h2>
-                <p id="sinopse">{{ filme.overview }}</p>
-                
+                            <p class="pdescri" id="genero">
 
-                <h2>Diretor</h2>
-                <p>{{ filme.diretor }}</p>
-                
-
- 
-                {% if filme.trailer_id %}
-                    <h2>Trailer</h2>
-                    <a id="playButton" data-trailer-id="{{ filme.trailer_id }}">
-                        <span class="material-symbols-outlined">play_circle</span>
-                    </a>
-                    <div id="videoOverlay">
-                        <div id="videoContainer">
-                            <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-                            <a id="closeButton">
-                                <span class="material-symbols-outlined">
-                                close
-                                </span>
-                            </a>
+                                {% for genero in filme.genres %}
+                                    {{ genero.name }}
+                                    {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                            
+                            <p class="pdescri"> {{ filme.runtime }} minutos</p>
                         </div>
                     </div>
-                {% endif %}
+                    
+                    
+                    
+                    <h2>Sinopse</h2>
+                    <p id="sinopse">{{ filme.overview }}</p>
+                    
 
-            </div>
-        </div>
-        
-        
-        
-        
-        
-        <h2>Elenco Principal</h2>
-        <ul>
-            {% for ator in filme.cast %}
-                <li class="liatores">
-                    <div class="listatores">
-                    <img id="atores" src="https://image.tmdb.org/t/p/w185/{{ ator.profile_path }}" alt="{{ ator.name }} Foto">
-                    <p class="nomeator">{{ ator.name }}</p>
-                    {% if ator.character %}
-                        <p class="personagen">{{ ator.character }}</p>
+                    <h2>Diretor</h2>
+                    <p>{{ filme.diretor }}</p>
+                    
+
+    
+                    {% if filme.trailer_id %}
+                        <h2>Trailer</h2>
+                        <a id="playButton" data-trailer-id="{{ filme.trailer_id }}">
+                            <span class="material-symbols-outlined">play_circle</span>
+                        </a>
+                        <div id="videoOverlay">
+                            <div id="videoContainer">
+                                <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                                <a id="closeButton">
+                                    <span class="material-symbols-outlined">
+                                    close
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
                     {% endif %}
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
+
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            <h2 class="Elenco">Elenco Principal</h2>
+            <ul>
+                {% for ator in filme.cast %}
+                    <li class="liatores">
+                        <div class="listatores">
+                        <img id="atores" src="https://image.tmdb.org/t/p/w185/{{ ator.profile_path }}" alt="{{ ator.name }} Foto">
+                        <p class="nomeator">{{ ator.name }}</p>
+                        {% if ator.character %}
+                            <p class="personagen">{{ ator.character }}</p>
+                        {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        
+
+
+            
         {% else %}
         <p>Filme não encontrado.</p>
-        {% endif %}  
+        {% endif %} 
+
     </div>
     <script src="{% static 'js/script2.js' %}"></script>
     <script src="{% static 'js\adaptive-backgrounds.js' %}"></script>
