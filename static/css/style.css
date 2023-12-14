@@ -12,7 +12,10 @@
   font-family: 'Titlename';
   src: url('/static/fonts/fonttitle.ttf') format('truetype');
 }
-
+@font-face {
+  font-family: 'SourceSanspro';
+  src: url('/static/fonts/SourceSansPro-Regular.ttf');
+}
 
 * {
   margin: 0px;
@@ -29,7 +32,7 @@
   --cor4: #142157;
   --cor5: #0D0D0D;
   --cor6: #F9BE00;
-  --font-padrao: "Montserrat", sans-serif;
+  --font-padrao: "SourceSanspro", sans-serif;
 }
 
 html, .bodyprin {

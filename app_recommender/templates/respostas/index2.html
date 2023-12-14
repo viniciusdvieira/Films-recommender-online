@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2f22e7c20.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
     <title>Recomendação</title>
@@ -12,8 +13,10 @@
 <body>
     <header >
         <nav class="navprin">
-            <a href="#"><img src="{% static 'img/CINEMAP3.png' %}" alt="logo" style="height: 60px;"></a>
-            
+            <a href="{% url 'home' %}"><img src="{% static 'img/CINEMAP3.png' %}" alt="logo" style="height: 60px;"></a>
+            <a id="voltar" href="{% url 'home' %}"><span class="material-symbols-outlined">
+                home
+                </span></a>
             <form class="searchBox" id="searchBox" method="get" action="{% url 'recomendation' %}">
                 <div class="wrap">
                     <div class="search">
@@ -34,12 +37,14 @@
             <img class="center" src="{% url 'proxy_image' filme.poster_path %}" alt="{{ filme.title }} Capa" data-adaptive-background="1">
             
             <div class="descriprin">
-
-                <h1>{{ filme.title }}</h1>
-   
+                <h1 id="title">{{ filme.title }}</h1>
                 <div class="descri2">
-                    <p id="nota">{{ filme.vote_average|floatformat:1 }}</p>
-                    <p id="data">◦      {{ filme.release_date }}</p>
+                    <div>
+                        <canvas id="myCanvas" width="70" height="70"></canvas>
+                        <p id="nota">{{ filme.vote_average|floatformat:1 }}</p>
+                    </div>
+                    <p id="data">{{ filme.release_date }}</p>
+
                     <p id="genero">
                         ◦
                         {% for genero in filme.genres %}
@@ -54,18 +59,37 @@
                 
                 
                 <h2>Sinopse</h2>
-                <p>{{ filme.overview }}</p>
+                <p id="sinopse">{{ filme.overview }}</p>
                 
+
+                <h2>Diretor</h2>
+                <p>{{ filme.diretor }}</p>
                 
+
+ 
+                {% if filme.trailer_id %}
+                    <h2>Trailer</h2>
+                    <a id="playButton" data-trailer-id="{{ filme.trailer_id }}">
+                        <span class="material-symbols-outlined">play_circle</span>
+                    </a>
+                    <div id="videoOverlay">
+                        <div id="videoContainer">
+                            <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                            <a id="closeButton">
+                                <span class="material-symbols-outlined">
+                                close
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+
             </div>
         </div>
         
         
-        <h2>Diretor</h2>
-        <p>{{ filme.diretor }}</p>
-        {% if filme.diretor_imagem %}
-        <img src="https://image.tmdb.org/t/p/w185/{{ filme.diretor_imagem }}" alt="{{ filme.diretor }} Foto">
-        {% endif %}
+        
+        
         
         <h2>Elenco Principal</h2>
         <ul>
@@ -83,29 +107,9 @@
         </ul>
         {% else %}
         <p>Filme não encontrado.</p>
-        {% endif %}
-
-        
-
-        <h2>Idioma Original</h2>
-        <p>{{ filme.idioma_original }}</p>
-        
-
-        <h2>Filmes Relacionados</h2>
-        <ul>
-            {% for filme_relacionado in filme.filmes_relacionados %}
-                <li>{{ filme_relacionado.title }}</li>
-            {% endfor %}
-        </ul>
-
-
-        {% if filme.trailer_id %}
-        <h2>Trailer</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ filme.trailer_id }}" frameborder="0" allowfullscreen></iframe>
-        {% endif %}
-        
-        <a id="voltar" href="{% url 'home' %}">Voltar para a Página Inicial</a>
+        {% endif %}  
     </div>
+    <script src="{% static 'js/script2.js' %}"></script>
     <script src="{% static 'js\adaptive-backgrounds.js' %}"></script>
     <script>
         AdaptiveBackgrounds();
